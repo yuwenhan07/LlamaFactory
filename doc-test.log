@@ -1,0 +1,828 @@
+/home/work/miniconda3/envs/lf/lib/python3.11/site-packages/jieba/_compat.py:18: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+INFO 03-12 21:26:18 [__init__.py:216] Automatically detected platform cuda.
+[INFO|training_args.py:2222] 2026-03-12 21:26:19,716 >> PyTorch: setting up devices
+[INFO|training_args.py:1881] 2026-03-12 21:26:22,876 >> The default value for the training argument `--report_to` will change in v5 (from all installed integrations to none). In v5, you will need to use `--report_to all` to get the same behavior as now. You should start updating your code and make this info disappear :-).
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:22,889 >> loading file vocab.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:22,889 >> loading file merges.txt
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:22,889 >> loading file tokenizer.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:22,889 >> loading file added_tokens.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:22,889 >> loading file special_tokens_map.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:22,889 >> loading file tokenizer_config.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:22,889 >> loading file chat_template.jinja
+[INFO|tokenization_utils_base.py:2380] 2026-03-12 21:26:23,128 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+[INFO|image_processing_base.py:381] 2026-03-12 21:26:23,129 >> loading configuration file /home/models/Qwen3-VL-8B-Instruct/preprocessor_config.json
+[INFO|image_processing_base.py:381] 2026-03-12 21:26:23,131 >> loading configuration file /home/models/Qwen3-VL-8B-Instruct/preprocessor_config.json
+[INFO|image_processing_base.py:428] 2026-03-12 21:26:23,136 >> Image processor Qwen2VLImageProcessorFast {
+  "crop_size": null,
+  "data_format": "channels_first",
+  "default_to_square": true,
+  "device": null,
+  "disable_grouping": null,
+  "do_center_crop": null,
+  "do_convert_rgb": true,
+  "do_normalize": true,
+  "do_pad": null,
+  "do_rescale": true,
+  "do_resize": true,
+  "image_mean": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "image_processor_type": "Qwen2VLImageProcessorFast",
+  "image_std": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "input_data_format": null,
+  "max_pixels": null,
+  "merge_size": 2,
+  "min_pixels": null,
+  "pad_size": null,
+  "patch_size": 16,
+  "processor_class": "Qwen3VLProcessor",
+  "resample": 3,
+  "rescale_factor": 0.00392156862745098,
+  "return_tensors": null,
+  "size": {
+    "longest_edge": 16777216,
+    "shortest_edge": 65536
+  },
+  "temporal_patch_size": 2
+}
+
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:23,136 >> loading file vocab.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:23,136 >> loading file merges.txt
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:23,136 >> loading file tokenizer.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:23,136 >> loading file added_tokens.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:23,136 >> loading file special_tokens_map.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:23,136 >> loading file tokenizer_config.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:23,136 >> loading file chat_template.jinja
+[INFO|tokenization_utils_base.py:2380] 2026-03-12 21:26:23,365 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+[INFO|video_processing_utils.py:724] 2026-03-12 21:26:23,365 >> loading configuration file /home/models/Qwen3-VL-8B-Instruct/video_preprocessor_config.json
+[INFO|video_processing_utils.py:770] 2026-03-12 21:26:23,366 >> Video processor Qwen3VLVideoProcessor {
+  "crop_size": null,
+  "data_format": "channels_first",
+  "default_to_square": true,
+  "device": null,
+  "do_center_crop": null,
+  "do_convert_rgb": true,
+  "do_normalize": true,
+  "do_rescale": true,
+  "do_resize": true,
+  "do_sample_frames": true,
+  "fps": 2,
+  "image_mean": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "image_std": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "input_data_format": null,
+  "max_frames": 768,
+  "merge_size": 2,
+  "min_frames": 4,
+  "num_frames": null,
+  "pad_size": null,
+  "patch_size": 16,
+  "processor_class": "Qwen3VLProcessor",
+  "resample": 3,
+  "rescale_factor": 0.00392156862745098,
+  "return_metadata": false,
+  "size": {
+    "longest_edge": 25165824,
+    "shortest_edge": 4096
+  },
+  "temporal_patch_size": 2,
+  "video_metadata": null,
+  "video_processor_type": "Qwen3VLVideoProcessor"
+}
+
+[INFO|processing_utils.py:1114] 2026-03-12 21:26:23,366 >> loading configuration file None
+[INFO|processing_utils.py:1199] 2026-03-12 21:26:23,766 >> Processor Qwen3VLProcessor:
+- image_processor: Qwen2VLImageProcessorFast {
+  "crop_size": null,
+  "data_format": "channels_first",
+  "default_to_square": true,
+  "device": null,
+  "disable_grouping": null,
+  "do_center_crop": null,
+  "do_convert_rgb": true,
+  "do_normalize": true,
+  "do_pad": null,
+  "do_rescale": true,
+  "do_resize": true,
+  "image_mean": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "image_processor_type": "Qwen2VLImageProcessorFast",
+  "image_std": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "input_data_format": null,
+  "max_pixels": null,
+  "merge_size": 2,
+  "min_pixels": null,
+  "pad_size": null,
+  "patch_size": 16,
+  "processor_class": "Qwen3VLProcessor",
+  "resample": 3,
+  "rescale_factor": 0.00392156862745098,
+  "return_tensors": null,
+  "size": {
+    "longest_edge": 16777216,
+    "shortest_edge": 65536
+  },
+  "temporal_patch_size": 2
+}
+
+- tokenizer: Qwen2TokenizerFast(name_or_path='/home/models/Qwen3-VL-8B-Instruct', vocab_size=151643, model_max_length=262144, is_fast=True, padding_side='right', truncation_side='right', special_tokens={'eos_token': '<|im_end|>', 'pad_token': '<|endoftext|>', 'additional_special_tokens': ['<|im_start|>', '<|im_end|>', '<|object_ref_start|>', '<|object_ref_end|>', '<|box_start|>', '<|box_end|>', '<|quad_start|>', '<|quad_end|>', '<|vision_start|>', '<|vision_end|>', '<|vision_pad|>', '<|image_pad|>', '<|video_pad|>']}, clean_up_tokenization_spaces=False, added_tokens_decoder={
+	151643: AddedToken("<|endoftext|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151644: AddedToken("<|im_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151645: AddedToken("<|im_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151646: AddedToken("<|object_ref_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151647: AddedToken("<|object_ref_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151648: AddedToken("<|box_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151649: AddedToken("<|box_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151650: AddedToken("<|quad_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151651: AddedToken("<|quad_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151652: AddedToken("<|vision_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151653: AddedToken("<|vision_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151654: AddedToken("<|vision_pad|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151655: AddedToken("<|image_pad|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151656: AddedToken("<|video_pad|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151657: AddedToken("<tool_call>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151658: AddedToken("</tool_call>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151659: AddedToken("<|fim_prefix|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151660: AddedToken("<|fim_middle|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151661: AddedToken("<|fim_suffix|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151662: AddedToken("<|fim_pad|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151663: AddedToken("<|repo_name|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151664: AddedToken("<|file_sep|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151665: AddedToken("<tool_response>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151666: AddedToken("</tool_response>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151667: AddedToken("<think>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151668: AddedToken("</think>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+}
+)
+- video_processor: Qwen3VLVideoProcessor {
+  "crop_size": null,
+  "data_format": "channels_first",
+  "default_to_square": true,
+  "device": null,
+  "do_center_crop": null,
+  "do_convert_rgb": true,
+  "do_normalize": true,
+  "do_rescale": true,
+  "do_resize": true,
+  "do_sample_frames": true,
+  "fps": 2,
+  "image_mean": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "image_std": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "input_data_format": null,
+  "max_frames": 768,
+  "merge_size": 2,
+  "min_frames": 4,
+  "num_frames": null,
+  "pad_size": null,
+  "patch_size": 16,
+  "processor_class": "Qwen3VLProcessor",
+  "resample": 3,
+  "rescale_factor": 0.00392156862745098,
+  "return_metadata": false,
+  "size": {
+    "longest_edge": 25165824,
+    "shortest_edge": 4096
+  },
+  "temporal_patch_size": 2,
+  "video_metadata": null,
+  "video_processor_type": "Qwen3VLVideoProcessor"
+}
+
+
+{
+  "processor_class": "Qwen3VLProcessor"
+}
+
+INFO 03-12 21:26:23 [utils.py:233] non-default args: {'trust_remote_code': True, 'max_model_len': 20736, 'tensor_parallel_size': 4, 'disable_log_stats': True, 'limit_mm_per_prompt': {'image': 138, 'video': 2, 'audio': 2}, 'model': '/home/models/Qwen3-VL-8B-Instruct'}
+[WARNING|configuration_utils.py:697] 2026-03-12 21:26:23,800 >> The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[INFO|configuration_utils.py:763] 2026-03-12 21:26:23,801 >> loading configuration file /home/models/Qwen3-VL-8B-Instruct/config.json
+[INFO|configuration_utils.py:763] 2026-03-12 21:26:23,801 >> loading configuration file /home/models/Qwen3-VL-8B-Instruct/config.json
+[INFO|configuration_utils.py:763] 2026-03-12 21:26:23,801 >> loading configuration file /home/models/Qwen3-VL-8B-Instruct/config.json
+[INFO|configuration_utils.py:839] 2026-03-12 21:26:23,803 >> Model config Qwen3VLConfig {
+  "architectures": [
+    "Qwen3VLForConditionalGeneration"
+  ],
+  "image_token_id": 151655,
+  "model_type": "qwen3_vl",
+  "text_config": {
+    "attention_bias": false,
+    "attention_dropout": 0.0,
+    "bos_token_id": 151643,
+    "dtype": "bfloat16",
+    "eos_token_id": 151645,
+    "head_dim": 128,
+    "hidden_act": "silu",
+    "hidden_size": 4096,
+    "initializer_range": 0.02,
+    "intermediate_size": 12288,
+    "max_position_embeddings": 262144,
+    "model_type": "qwen3_vl_text",
+    "num_attention_heads": 32,
+    "num_hidden_layers": 36,
+    "num_key_value_heads": 8,
+    "rms_norm_eps": 1e-06,
+    "rope_scaling": {
+      "mrope_interleaved": true,
+      "mrope_section": [
+        24,
+        20,
+        20
+      ],
+      "rope_type": "default"
+    },
+    "rope_theta": 5000000,
+    "use_cache": true,
+    "vocab_size": 151936
+  },
+  "tie_word_embeddings": false,
+  "transformers_version": "4.57.6",
+  "video_token_id": 151656,
+  "vision_config": {
+    "deepstack_visual_indexes": [
+      8,
+      16,
+      24
+    ],
+    "depth": 27,
+    "hidden_act": "gelu_pytorch_tanh",
+    "hidden_size": 1152,
+    "in_channels": 3,
+    "initializer_range": 0.02,
+    "intermediate_size": 4304,
+    "model_type": "qwen3_vl",
+    "num_heads": 16,
+    "num_position_embeddings": 2304,
+    "out_hidden_size": 4096,
+    "patch_size": 16,
+    "spatial_merge_size": 2,
+    "temporal_patch_size": 2
+  },
+  "vision_end_token_id": 151653,
+  "vision_start_token_id": 151652
+}
+
+INFO 03-12 21:26:23 [model.py:547] Resolved architecture: Qwen3VLForConditionalGeneration
+[WARNING|logging.py:328] 2026-03-12 21:26:23,804 >> `torch_dtype` is deprecated! Use `dtype` instead!
+INFO 03-12 21:26:23 [model.py:1510] Using max model len 20736
+INFO 03-12 21:26:23 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=16384.
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:23,931 >> loading file vocab.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:23,931 >> loading file merges.txt
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:23,931 >> loading file tokenizer.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:23,931 >> loading file added_tokens.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:23,931 >> loading file special_tokens_map.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:23,931 >> loading file tokenizer_config.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:23,931 >> loading file chat_template.jinja
+[INFO|tokenization_utils_base.py:2380] 2026-03-12 21:26:24,180 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+[INFO|configuration_utils.py:939] 2026-03-12 21:26:24,296 >> loading configuration file /home/models/Qwen3-VL-8B-Instruct/generation_config.json
+[INFO|configuration_utils.py:986] 2026-03-12 21:26:24,297 >> Generate config GenerationConfig {
+  "bos_token_id": 151643,
+  "do_sample": true,
+  "eos_token_id": [
+    151645,
+    151643
+  ],
+  "pad_token_id": 151643,
+  "temperature": 0.7,
+  "top_k": 20,
+  "top_p": 0.8
+}
+
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:25,816 >> loading file vocab.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:25,816 >> loading file merges.txt
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:25,817 >> loading file tokenizer.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:25,817 >> loading file added_tokens.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:25,817 >> loading file special_tokens_map.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:25,817 >> loading file tokenizer_config.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:26:25,817 >> loading file chat_template.jinja
+[INFO|tokenization_utils_base.py:2380] 2026-03-12 21:26:26,058 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+WARNING 03-12 21:26:26 [__init__.py:3036] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+/home/work/miniconda3/envs/lf/lib/python3.11/site-packages/jieba/_compat.py:18: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+INFO 03-12 21:26:31 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(EngineCore_DP0 pid=129814)[0;0m INFO 03-12 21:26:32 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=129814)[0;0m INFO 03-12 21:26:32 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='/home/models/Qwen3-VL-8B-Instruct', speculative_config=None, tokenizer='/home/models/Qwen3-VL-8B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=20736, download_dir=None, load_format=auto, tensor_parallel_size=4, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=/home/models/Qwen3-VL-8B-Instruct, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":512,"local_cache_dir":null}
+[1;36m(EngineCore_DP0 pid=129814)[0;0m WARNING 03-12 21:26:32 [multiproc_executor.py:720] Reducing Torch parallelism from 64 threads to 1 to avoid unnecessary CPU contention. Set OMP_NUM_THREADS in the external environment to tune this value as needed.
+[1;36m(EngineCore_DP0 pid=129814)[0;0m INFO 03-12 21:26:32 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0, 1, 2, 3], buffer_handle=(4, 16777216, 10, 'psm_c070e8a3'), local_subscribe_addr='ipc:///tmp/361cacbc-7ffe-4320-8ab2-ea83df40c974', remote_subscribe_addr=None, remote_addr_ipv6=False)
+/home/work/miniconda3/envs/lf/lib/python3.11/site-packages/jieba/_compat.py:18: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/home/work/miniconda3/envs/lf/lib/python3.11/site-packages/jieba/_compat.py:18: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/home/work/miniconda3/envs/lf/lib/python3.11/site-packages/jieba/_compat.py:18: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/home/work/miniconda3/envs/lf/lib/python3.11/site-packages/jieba/_compat.py:18: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+INFO 03-12 21:26:37 [__init__.py:216] Automatically detected platform cuda.
+INFO 03-12 21:26:38 [__init__.py:216] Automatically detected platform cuda.
+INFO 03-12 21:26:38 [__init__.py:216] Automatically detected platform cuda.
+INFO 03-12 21:26:38 [__init__.py:216] Automatically detected platform cuda.
+INFO 03-12 21:26:40 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_0c09fc1f'), local_subscribe_addr='ipc:///tmp/982e63ac-1733-4a56-acb4-000f67782a49', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 03-12 21:26:41 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_5d7713bf'), local_subscribe_addr='ipc:///tmp/0f6cdcae-7e4e-47cc-9ea7-8ea3b9a23d00', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 03-12 21:26:41 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_4c0ab2e1'), local_subscribe_addr='ipc:///tmp/def8cb2c-343d-46f1-99f8-e215dbe5f8f8', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 03-12 21:26:41 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_92ff0c37'), local_subscribe_addr='ipc:///tmp/ac9d54b2-372b-4128-9795-93d89c77c896', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+INFO 03-12 21:26:42 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 03-12 21:26:42 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 03-12 21:26:42 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 03-12 21:26:42 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 03-12 21:26:42 [pynccl.py:103] vLLM is using nccl==2.27.3
+INFO 03-12 21:26:42 [pynccl.py:103] vLLM is using nccl==2.27.3
+INFO 03-12 21:26:42 [pynccl.py:103] vLLM is using nccl==2.27.3
+INFO 03-12 21:26:42 [pynccl.py:103] vLLM is using nccl==2.27.3
+WARNING 03-12 21:26:43 [symm_mem.py:58] SymmMemCommunicator: Device capability 8.0 not supported, communicator is not available.
+WARNING 03-12 21:26:43 [symm_mem.py:58] SymmMemCommunicator: Device capability 8.0 not supported, communicator is not available.
+WARNING 03-12 21:26:43 [symm_mem.py:58] SymmMemCommunicator: Device capability 8.0 not supported, communicator is not available.
+WARNING 03-12 21:26:43 [symm_mem.py:58] SymmMemCommunicator: Device capability 8.0 not supported, communicator is not available.
+INFO 03-12 21:26:43 [custom_all_reduce.py:35] Skipping P2P check and trusting the driver's P2P report.
+INFO 03-12 21:26:43 [custom_all_reduce.py:35] Skipping P2P check and trusting the driver's P2P report.
+INFO 03-12 21:26:43 [custom_all_reduce.py:35] Skipping P2P check and trusting the driver's P2P report.
+INFO 03-12 21:26:43 [custom_all_reduce.py:35] Skipping P2P check and trusting the driver's P2P report.
+INFO 03-12 21:26:43 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[1, 2, 3], buffer_handle=(3, 4194304, 6, 'psm_fed7df4a'), local_subscribe_addr='ipc:///tmp/db8ba338-5a03-40b1-aef9-d1db86034466', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+INFO 03-12 21:26:43 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 03-12 21:26:43 [pynccl.py:103] vLLM is using nccl==2.27.3
+INFO 03-12 21:26:43 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 03-12 21:26:43 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 03-12 21:26:43 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 03-12 21:26:43 [pynccl.py:103] vLLM is using nccl==2.27.3
+INFO 03-12 21:26:43 [pynccl.py:103] vLLM is using nccl==2.27.3
+INFO 03-12 21:26:43 [pynccl.py:103] vLLM is using nccl==2.27.3
+INFO 03-12 21:26:43 [parallel_state.py:1208] rank 1 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 1, EP rank 1
+INFO 03-12 21:26:43 [parallel_state.py:1208] rank 0 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+INFO 03-12 21:26:43 [parallel_state.py:1208] rank 3 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 3, EP rank 3
+INFO 03-12 21:26:43 [parallel_state.py:1208] rank 2 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 2, EP rank 2
+INFO 03-12 21:26:43 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+INFO 03-12 21:26:44 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+INFO 03-12 21:26:44 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+INFO 03-12 21:26:44 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+[1;36m(Worker_TP0 pid=130002)[0;0m INFO 03-12 21:26:46 [gpu_model_runner.py:2602] Starting to load model /home/models/Qwen3-VL-8B-Instruct...
+[1;36m(Worker_TP1 pid=130003)[0;0m INFO 03-12 21:26:46 [gpu_model_runner.py:2602] Starting to load model /home/models/Qwen3-VL-8B-Instruct...
+[1;36m(Worker_TP3 pid=130005)[0;0m INFO 03-12 21:26:46 [gpu_model_runner.py:2602] Starting to load model /home/models/Qwen3-VL-8B-Instruct...
+[1;36m(Worker_TP2 pid=130004)[0;0m INFO 03-12 21:26:46 [gpu_model_runner.py:2602] Starting to load model /home/models/Qwen3-VL-8B-Instruct...
+[1;36m(Worker_TP0 pid=130002)[0;0m INFO 03-12 21:26:46 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(Worker_TP1 pid=130003)[0;0m INFO 03-12 21:26:46 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(Worker_TP0 pid=130002)[0;0m INFO 03-12 21:26:46 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(Worker_TP3 pid=130005)[0;0m INFO 03-12 21:26:47 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(Worker_TP1 pid=130003)[0;0m INFO 03-12 21:26:47 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(Worker_TP2 pid=130004)[0;0m INFO 03-12 21:26:47 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(Worker_TP3 pid=130005)[0;0m INFO 03-12 21:26:47 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(Worker_TP2 pid=130004)[0;0m INFO 03-12 21:26:47 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(Worker_TP0 pid=130002)[0;0m <frozen importlib._bootstrap_external>:1241: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+[1;36m(Worker_TP0 pid=130002)[0;0m <frozen importlib._bootstrap_external>:1241: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+[1;36m(Worker_TP0 pid=130002)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(Worker_TP1 pid=130003)[0;0m <frozen importlib._bootstrap_external>:1241: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+[1;36m(Worker_TP1 pid=130003)[0;0m <frozen importlib._bootstrap_external>:1241: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+[1;36m(Worker_TP3 pid=130005)[0;0m <frozen importlib._bootstrap_external>:1241: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+[1;36m(Worker_TP3 pid=130005)[0;0m <frozen importlib._bootstrap_external>:1241: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+[1;36m(Worker_TP2 pid=130004)[0;0m <frozen importlib._bootstrap_external>:1241: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+[1;36m(Worker_TP2 pid=130004)[0;0m <frozen importlib._bootstrap_external>:1241: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+[1;36m(Worker_TP0 pid=130002)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:02,  1.48it/s]
+[1;36m(Worker_TP0 pid=130002)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:01<00:01,  1.21it/s]
+[1;36m(Worker_TP0 pid=130002)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:02<00:00,  1.38it/s]
+[1;36m(Worker_TP0 pid=130002)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.41it/s]
+[1;36m(Worker_TP0 pid=130002)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.38it/s]
+[1;36m(Worker_TP0 pid=130002)[0;0m 
+[1;36m(Worker_TP0 pid=130002)[0;0m INFO 03-12 21:26:50 [default_loader.py:267] Loading weights took 2.92 seconds
+[1;36m(Worker_TP1 pid=130003)[0;0m INFO 03-12 21:26:50 [default_loader.py:267] Loading weights took 2.95 seconds
+[1;36m(Worker_TP3 pid=130005)[0;0m INFO 03-12 21:26:50 [default_loader.py:267] Loading weights took 2.97 seconds
+[1;36m(Worker_TP2 pid=130004)[0;0m INFO 03-12 21:26:50 [default_loader.py:267] Loading weights took 3.05 seconds
+[1;36m(Worker_TP0 pid=130002)[0;0m INFO 03-12 21:26:51 [gpu_model_runner.py:2653] Model loading took 4.7183 GiB and 3.694198 seconds
+[1;36m(Worker_TP1 pid=130003)[0;0m INFO 03-12 21:26:51 [gpu_model_runner.py:2653] Model loading took 4.7183 GiB and 3.726657 seconds
+[1;36m(Worker_TP3 pid=130005)[0;0m INFO 03-12 21:26:51 [gpu_model_runner.py:2653] Model loading took 4.7183 GiB and 3.755513 seconds
+[1;36m(Worker_TP2 pid=130004)[0;0m INFO 03-12 21:26:51 [gpu_model_runner.py:2653] Model loading took 4.7183 GiB and 3.856129 seconds
+[1;36m(Worker_TP2 pid=130004)[0;0m INFO 03-12 21:26:51 [gpu_model_runner.py:3344] Encoder cache will be initialized with a budget of 153600 tokens, and profiled with 1 video items of the maximum feature size.
+[1;36m(Worker_TP1 pid=130003)[0;0m INFO 03-12 21:26:51 [gpu_model_runner.py:3344] Encoder cache will be initialized with a budget of 153600 tokens, and profiled with 1 video items of the maximum feature size.
+[1;36m(Worker_TP0 pid=130002)[0;0m INFO 03-12 21:26:51 [gpu_model_runner.py:3344] Encoder cache will be initialized with a budget of 153600 tokens, and profiled with 1 video items of the maximum feature size.
+[1;36m(Worker_TP3 pid=130005)[0;0m INFO 03-12 21:26:51 [gpu_model_runner.py:3344] Encoder cache will be initialized with a budget of 153600 tokens, and profiled with 1 video items of the maximum feature size.
+[1;36m(Worker_TP1 pid=130003)[0;0m INFO 03-12 21:27:08 [backends.py:548] Using cache directory: /root/.cache/vllm/torch_compile_cache/41c80677cf/rank_1_0/backbone for vLLM's torch.compile
+[1;36m(Worker_TP1 pid=130003)[0;0m INFO 03-12 21:27:08 [backends.py:559] Dynamo bytecode transform time: 7.54 s
+[1;36m(Worker_TP0 pid=130002)[0;0m INFO 03-12 21:27:08 [backends.py:548] Using cache directory: /root/.cache/vllm/torch_compile_cache/41c80677cf/rank_0_0/backbone for vLLM's torch.compile
+[1;36m(Worker_TP0 pid=130002)[0;0m INFO 03-12 21:27:08 [backends.py:559] Dynamo bytecode transform time: 7.55 s
+[1;36m(Worker_TP2 pid=130004)[0;0m INFO 03-12 21:27:08 [backends.py:548] Using cache directory: /root/.cache/vllm/torch_compile_cache/41c80677cf/rank_2_0/backbone for vLLM's torch.compile
+[1;36m(Worker_TP2 pid=130004)[0;0m INFO 03-12 21:27:08 [backends.py:559] Dynamo bytecode transform time: 7.61 s
+[1;36m(Worker_TP3 pid=130005)[0;0m INFO 03-12 21:27:08 [backends.py:548] Using cache directory: /root/.cache/vllm/torch_compile_cache/41c80677cf/rank_3_0/backbone for vLLM's torch.compile
+[1;36m(Worker_TP3 pid=130005)[0;0m INFO 03-12 21:27:08 [backends.py:559] Dynamo bytecode transform time: 7.67 s
+[1;36m(Worker_TP1 pid=130003)[0;0m INFO 03-12 21:27:12 [backends.py:164] Directly load the compiled graph(s) for dynamic shape from the cache, took 3.222 s
+[1;36m(Worker_TP0 pid=130002)[0;0m INFO 03-12 21:27:12 [backends.py:164] Directly load the compiled graph(s) for dynamic shape from the cache, took 3.224 s
+[1;36m(Worker_TP2 pid=130004)[0;0m INFO 03-12 21:27:12 [backends.py:164] Directly load the compiled graph(s) for dynamic shape from the cache, took 3.216 s
+[1;36m(Worker_TP3 pid=130005)[0;0m INFO 03-12 21:27:12 [backends.py:164] Directly load the compiled graph(s) for dynamic shape from the cache, took 3.242 s
+[1;36m(Worker_TP1 pid=130003)[0;0m INFO 03-12 21:27:13 [monitor.py:34] torch.compile takes 7.54 s in total
+[1;36m(Worker_TP0 pid=130002)[0;0m INFO 03-12 21:27:13 [monitor.py:34] torch.compile takes 7.55 s in total
+[1;36m(Worker_TP2 pid=130004)[0;0m INFO 03-12 21:27:13 [monitor.py:34] torch.compile takes 7.61 s in total
+[1;36m(Worker_TP3 pid=130005)[0;0m INFO 03-12 21:27:13 [monitor.py:34] torch.compile takes 7.67 s in total
+[1;36m(Worker_TP1 pid=130003)[0;0m INFO 03-12 21:27:14 [gpu_worker.py:298] Available KV cache memory: 58.96 GiB
+[1;36m(Worker_TP0 pid=130002)[0;0m INFO 03-12 21:27:14 [gpu_worker.py:298] Available KV cache memory: 58.96 GiB
+[1;36m(Worker_TP3 pid=130005)[0;0m INFO 03-12 21:27:15 [gpu_worker.py:298] Available KV cache memory: 58.96 GiB
+[1;36m(Worker_TP2 pid=130004)[0;0m INFO 03-12 21:27:15 [gpu_worker.py:298] Available KV cache memory: 58.96 GiB
+[1;36m(EngineCore_DP0 pid=129814)[0;0m INFO 03-12 21:27:15 [kv_cache_utils.py:1087] GPU KV cache size: 1,717,424 tokens
+[1;36m(EngineCore_DP0 pid=129814)[0;0m INFO 03-12 21:27:15 [kv_cache_utils.py:1091] Maximum concurrency for 20,736 tokens per request: 82.82x
+[1;36m(EngineCore_DP0 pid=129814)[0;0m INFO 03-12 21:27:15 [kv_cache_utils.py:1087] GPU KV cache size: 1,717,424 tokens
+[1;36m(EngineCore_DP0 pid=129814)[0;0m INFO 03-12 21:27:15 [kv_cache_utils.py:1091] Maximum concurrency for 20,736 tokens per request: 82.82x
+[1;36m(EngineCore_DP0 pid=129814)[0;0m INFO 03-12 21:27:15 [kv_cache_utils.py:1087] GPU KV cache size: 1,717,424 tokens
+[1;36m(EngineCore_DP0 pid=129814)[0;0m INFO 03-12 21:27:15 [kv_cache_utils.py:1091] Maximum concurrency for 20,736 tokens per request: 82.82x
+[1;36m(EngineCore_DP0 pid=129814)[0;0m INFO 03-12 21:27:15 [kv_cache_utils.py:1087] GPU KV cache size: 1,717,424 tokens
+[1;36m(EngineCore_DP0 pid=129814)[0;0m INFO 03-12 21:27:15 [kv_cache_utils.py:1091] Maximum concurrency for 20,736 tokens per request: 82.82x
+[1;36m(Worker_TP0 pid=130002)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/67 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   1%|▏         | 1/67 [00:00<00:08,  8.24it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   3%|▎         | 2/67 [00:00<00:07,  8.35it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   4%|▍         | 3/67 [00:00<00:07,  8.39it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   6%|▌         | 4/67 [00:00<00:07,  8.40it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   7%|▋         | 5/67 [00:00<00:07,  8.41it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   9%|▉         | 6/67 [00:00<00:07,  8.42it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  10%|█         | 7/67 [00:00<00:07,  8.42it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 8/67 [00:00<00:06,  8.43it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  13%|█▎        | 9/67 [00:01<00:06,  8.44it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  15%|█▍        | 10/67 [00:01<00:06,  8.44it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▋        | 11/67 [00:01<00:06,  8.44it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  18%|█▊        | 12/67 [00:01<00:06,  8.45it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  19%|█▉        | 13/67 [00:01<00:06,  8.45it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  21%|██        | 14/67 [00:01<00:06,  8.45it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  22%|██▏       | 15/67 [00:01<00:06,  8.39it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  24%|██▍       | 16/67 [00:01<00:06,  8.41it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  25%|██▌       | 17/67 [00:02<00:06,  8.24it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  27%|██▋       | 18/67 [00:02<00:05,  8.41it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  28%|██▊       | 19/67 [00:02<00:05,  8.52it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  30%|██▉       | 20/67 [00:02<00:05,  8.61it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  31%|███▏      | 21/67 [00:02<00:05,  8.67it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  33%|███▎      | 22/67 [00:02<00:05,  8.71it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  34%|███▍      | 23/67 [00:02<00:05,  8.74it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  36%|███▌      | 24/67 [00:02<00:04,  8.76it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  37%|███▋      | 25/67 [00:02<00:04,  8.78it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  39%|███▉      | 26/67 [00:03<00:04,  8.79it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  40%|████      | 27/67 [00:03<00:04,  8.79it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  42%|████▏     | 28/67 [00:03<00:04,  8.75it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  43%|████▎     | 29/67 [00:03<00:04,  8.77it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  45%|████▍     | 30/67 [00:03<00:04,  8.74it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  46%|████▋     | 31/67 [00:03<00:04,  8.71it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  48%|████▊     | 32/67 [00:03<00:04,  8.69it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  49%|████▉     | 33/67 [00:03<00:03,  8.82it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████     | 34/67 [00:03<00:03,  8.91it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  52%|█████▏    | 35/67 [00:04<00:03,  8.93it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  54%|█████▎    | 36/67 [00:04<00:03,  8.95it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  55%|█████▌    | 37/67 [00:04<00:03,  8.96it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  57%|█████▋    | 38/67 [00:04<00:03,  8.96it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  58%|█████▊    | 39/67 [00:04<00:03,  8.91it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  60%|█████▉    | 40/67 [00:04<00:03,  8.93it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  61%|██████    | 41/67 [00:04<00:02,  8.96it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  63%|██████▎   | 42/67 [00:04<00:02,  8.99it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  64%|██████▍   | 43/67 [00:04<00:02,  9.01it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  66%|██████▌   | 44/67 [00:05<00:02,  9.02it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  67%|██████▋   | 45/67 [00:05<00:02,  9.03it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|██████▊   | 46/67 [00:05<00:02,  9.04it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  70%|███████   | 47/67 [00:05<00:02,  9.04it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  72%|███████▏  | 48/67 [00:05<00:02,  9.05it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  73%|███████▎  | 49/67 [00:05<00:01,  9.06it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  75%|███████▍  | 50/67 [00:05<00:01,  9.02it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  76%|███████▌  | 51/67 [00:05<00:01,  8.92it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  78%|███████▊  | 52/67 [00:05<00:01,  8.77it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  79%|███████▉  | 53/67 [00:06<00:01,  8.65it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  81%|████████  | 54/67 [00:06<00:01,  8.57it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  82%|████████▏ | 55/67 [00:06<00:01,  8.43it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  84%|████████▎ | 56/67 [00:06<00:01,  8.33it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  85%|████████▌ | 57/67 [00:06<00:01,  8.28it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  87%|████████▋ | 58/67 [00:06<00:01,  8.38it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  88%|████████▊ | 59/67 [00:06<00:00,  8.40it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  90%|████████▉ | 60/67 [00:06<00:00,  8.42it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  91%|█████████ | 61/67 [00:07<00:00,  8.09it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  93%|█████████▎| 62/67 [00:07<00:00,  8.29it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  94%|█████████▍| 63/67 [00:07<00:00,  8.40it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  96%|█████████▌| 64/67 [00:07<00:00,  8.52it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  97%|█████████▋| 65/67 [00:07<00:00,  8.61it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  99%|█████████▊| 66/67 [00:07<00:00,  8.73it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 67/67 [00:07<00:00,  7.88it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 67/67 [00:07<00:00,  8.61it/s]
+[1;36m(Worker_TP0 pid=130002)[0;0m Capturing CUDA graphs (decode, FULL):   0%|          | 0/67 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   3%|▎         | 2/67 [00:00<00:04, 13.60it/s]Capturing CUDA graphs (decode, FULL):   6%|▌         | 4/67 [00:00<00:04, 14.03it/s]Capturing CUDA graphs (decode, FULL):   9%|▉         | 6/67 [00:00<00:04, 14.37it/s]Capturing CUDA graphs (decode, FULL):  12%|█▏        | 8/67 [00:00<00:04, 14.27it/s]Capturing CUDA graphs (decode, FULL):  15%|█▍        | 10/67 [00:00<00:03, 14.48it/s]Capturing CUDA graphs (decode, FULL):  18%|█▊        | 12/67 [00:00<00:03, 14.47it/s]Capturing CUDA graphs (decode, FULL):  21%|██        | 14/67 [00:00<00:03, 14.61it/s]Capturing CUDA graphs (decode, FULL):  24%|██▍       | 16/67 [00:01<00:03, 14.90it/s]Capturing CUDA graphs (decode, FULL):  27%|██▋       | 18/67 [00:01<00:03, 15.33it/s]Capturing CUDA graphs (decode, FULL):  30%|██▉       | 20/67 [00:01<00:02, 15.74it/s]Capturing CUDA graphs (decode, FULL):  33%|███▎      | 22/67 [00:01<00:02, 15.96it/s]Capturing CUDA graphs (decode, FULL):  36%|███▌      | 24/67 [00:01<00:02, 16.20it/s]Capturing CUDA graphs (decode, FULL):  39%|███▉      | 26/67 [00:01<00:02, 16.47it/s]Capturing CUDA graphs (decode, FULL):  42%|████▏     | 28/67 [00:01<00:02, 16.40it/s]Capturing CUDA graphs (decode, FULL):  45%|████▍     | 30/67 [00:01<00:02, 16.45it/s]Capturing CUDA graphs (decode, FULL):  48%|████▊     | 32/67 [00:02<00:02, 16.66it/s]Capturing CUDA graphs (decode, FULL):  51%|█████     | 34/67 [00:02<00:01, 16.98it/s]Capturing CUDA graphs (decode, FULL):  54%|█████▎    | 36/67 [00:02<00:01, 17.12it/s]Capturing CUDA graphs (decode, FULL):  57%|█████▋    | 38/67 [00:02<00:01, 16.88it/s]Capturing CUDA graphs (decode, FULL):  60%|█████▉    | 40/67 [00:02<00:01, 16.96it/s]Capturing CUDA graphs (decode, FULL):  63%|██████▎   | 42/67 [00:02<00:01, 17.27it/s]Capturing CUDA graphs (decode, FULL):  66%|██████▌   | 44/67 [00:02<00:01, 17.40it/s]Capturing CUDA graphs (decode, FULL):  69%|██████▊   | 46/67 [00:02<00:01, 17.51it/s]Capturing CUDA graphs (decode, FULL):  72%|███████▏  | 48/67 [00:02<00:01, 17.49it/s]Capturing CUDA graphs (decode, FULL):  75%|███████▍  | 50/67 [00:03<00:00, 17.61it/s]Capturing CUDA graphs (decode, FULL):  78%|███████▊  | 52/67 [00:03<00:00, 17.21it/s]Capturing CUDA graphs (decode, FULL):  81%|████████  | 54/67 [00:03<00:00, 17.12it/s]Capturing CUDA graphs (decode, FULL):  84%|████████▎ | 56/67 [00:03<00:00, 17.05it/s]Capturing CUDA graphs (decode, FULL):  87%|████████▋ | 58/67 [00:03<00:00, 17.34it/s]Capturing CUDA graphs (decode, FULL):  90%|████████▉ | 60/67 [00:03<00:00, 17.27it/s]Capturing CUDA graphs (decode, FULL):  93%|█████████▎| 62/67 [00:03<00:00, 17.54it/s][1;36m(Worker_TP2 pid=130004)[0;0m INFO 03-12 21:27:27 [custom_all_reduce.py:203] Registering 9648 cuda graph addresses
+Capturing CUDA graphs (decode, FULL):  96%|█████████▌| 64/67 [00:03<00:00, 17.85it/s]Capturing CUDA graphs (decode, FULL):  99%|█████████▊| 66/67 [00:04<00:00, 17.85it/s][1;36m(Worker_TP3 pid=130005)[0;0m INFO 03-12 21:27:27 [custom_all_reduce.py:203] Registering 9648 cuda graph addresses
+Capturing CUDA graphs (decode, FULL): 100%|██████████| 67/67 [00:04<00:00, 16.48it/s]
+[1;36m(Worker_TP1 pid=130003)[0;0m INFO 03-12 21:27:27 [custom_all_reduce.py:203] Registering 9648 cuda graph addresses
+[1;36m(Worker_TP0 pid=130002)[0;0m INFO 03-12 21:27:27 [custom_all_reduce.py:203] Registering 9648 cuda graph addresses
+[1;36m(Worker_TP1 pid=130003)[0;0m INFO 03-12 21:27:28 [gpu_model_runner.py:3480] Graph capturing finished in 13 secs, took 5.84 GiB
+[1;36m(Worker_TP3 pid=130005)[0;0m INFO 03-12 21:27:28 [gpu_model_runner.py:3480] Graph capturing finished in 13 secs, took 5.84 GiB
+[1;36m(Worker_TP0 pid=130002)[0;0m INFO 03-12 21:27:28 [gpu_model_runner.py:3480] Graph capturing finished in 13 secs, took 5.84 GiB
+[1;36m(Worker_TP2 pid=130004)[0;0m INFO 03-12 21:27:28 [gpu_model_runner.py:3480] Graph capturing finished in 13 secs, took 5.84 GiB
+[1;36m(EngineCore_DP0 pid=129814)[0;0m INFO 03-12 21:27:28 [core.py:210] init engine (profile, create kv cache, warmup model) took 37.06 seconds
+INFO 03-12 21:27:33 [llm.py:306] Supported_tasks: ['generate']
+[INFO|2026-03-12 21:27:33] llamafactory.data.loader:144 >> Loading dataset bbox_docvqa_document.jsonl...
+training example:
+input_ids:
+[151644, 872, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 151652, 151655, 151653, 198, 16141, 279, 3405, 1667, 1172, 279, 2197, 2168, 1141, 568, 3411, 1172, 279, 1590, 4226, 448, 902, 16148, 624, 641, 279, 7071, 11, 892, 6524, 41229, 21189, 1378, 36957, 11, 323, 504, 892, 11931, 653, 807, 2525, 30, 151645, 198, 151644, 77091, 198]
+inputs:
+<|im_start|>user
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+<|vision_start|><|image_pad|><|vision_end|>
+Answer the question using only the document image(s). Return only the final answer with no explanation.
+In the figure, which letter uniquely receives two arrows, and from which letters do they come?<|im_end|>
+<|im_start|>assistant
+
+label_ids:
+[35, 26, 504, 356, 323, 468, 13, 151645, 198]
+labels:
+D; from C and E.<|im_end|>
+
+Processing batched inference:   0%|          | 0/1623 [00:00<?, ?it/s]
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][A[INFO|image_processing_base.py:381] 2026-03-12 21:27:37,682 >> loading configuration file /home/models/Qwen3-VL-8B-Instruct/preprocessor_config.json
+[INFO|image_processing_base.py:428] 2026-03-12 21:27:37,683 >> Image processor Qwen2VLImageProcessorFast {
+  "crop_size": null,
+  "data_format": "channels_first",
+  "default_to_square": true,
+  "device": null,
+  "disable_grouping": null,
+  "do_center_crop": null,
+  "do_convert_rgb": true,
+  "do_normalize": true,
+  "do_pad": null,
+  "do_rescale": true,
+  "do_resize": true,
+  "image_mean": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "image_processor_type": "Qwen2VLImageProcessorFast",
+  "image_std": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "input_data_format": null,
+  "max_pixels": null,
+  "merge_size": 2,
+  "min_pixels": null,
+  "pad_size": null,
+  "patch_size": 16,
+  "processor_class": "Qwen3VLProcessor",
+  "resample": 3,
+  "rescale_factor": 0.00392156862745098,
+  "return_tensors": null,
+  "size": {
+    "longest_edge": 16777216,
+    "shortest_edge": 65536
+  },
+  "temporal_patch_size": 2
+}
+
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:27:37,683 >> loading file vocab.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:27:37,683 >> loading file merges.txt
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:27:37,683 >> loading file tokenizer.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:27:37,683 >> loading file added_tokens.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:27:37,683 >> loading file special_tokens_map.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:27:37,683 >> loading file tokenizer_config.json
+[INFO|tokenization_utils_base.py:2109] 2026-03-12 21:27:37,683 >> loading file chat_template.jinja
+[INFO|tokenization_utils_base.py:2380] 2026-03-12 21:27:38,402 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+[INFO|video_processing_utils.py:724] 2026-03-12 21:27:38,403 >> loading configuration file /home/models/Qwen3-VL-8B-Instruct/video_preprocessor_config.json
+[INFO|video_processing_utils.py:770] 2026-03-12 21:27:38,403 >> Video processor Qwen3VLVideoProcessor {
+  "crop_size": null,
+  "data_format": "channels_first",
+  "default_to_square": true,
+  "device": null,
+  "do_center_crop": null,
+  "do_convert_rgb": true,
+  "do_normalize": true,
+  "do_rescale": true,
+  "do_resize": true,
+  "do_sample_frames": true,
+  "fps": 2,
+  "image_mean": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "image_std": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "input_data_format": null,
+  "max_frames": 768,
+  "merge_size": 2,
+  "min_frames": 4,
+  "num_frames": null,
+  "pad_size": null,
+  "patch_size": 16,
+  "processor_class": "Qwen3VLProcessor",
+  "resample": 3,
+  "rescale_factor": 0.00392156862745098,
+  "return_metadata": false,
+  "size": {
+    "longest_edge": 25165824,
+    "shortest_edge": 4096
+  },
+  "temporal_patch_size": 2,
+  "video_metadata": null,
+  "video_processor_type": "Qwen3VLVideoProcessor"
+}
+
+[INFO|processing_utils.py:1114] 2026-03-12 21:27:38,935 >> loading configuration file None
+[INFO|processing_utils.py:1199] 2026-03-12 21:27:39,454 >> Processor Qwen3VLProcessor:
+- image_processor: Qwen2VLImageProcessorFast {
+  "crop_size": null,
+  "data_format": "channels_first",
+  "default_to_square": true,
+  "device": null,
+  "disable_grouping": null,
+  "do_center_crop": null,
+  "do_convert_rgb": true,
+  "do_normalize": true,
+  "do_pad": null,
+  "do_rescale": true,
+  "do_resize": true,
+  "image_mean": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "image_processor_type": "Qwen2VLImageProcessorFast",
+  "image_std": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "input_data_format": null,
+  "max_pixels": null,
+  "merge_size": 2,
+  "min_pixels": null,
+  "pad_size": null,
+  "patch_size": 16,
+  "processor_class": "Qwen3VLProcessor",
+  "resample": 3,
+  "rescale_factor": 0.00392156862745098,
+  "return_tensors": null,
+  "size": {
+    "longest_edge": 16777216,
+    "shortest_edge": 65536
+  },
+  "temporal_patch_size": 2
+}
+
+- tokenizer: CachedQwen2TokenizerFast(name_or_path='/home/models/Qwen3-VL-8B-Instruct', vocab_size=151643, model_max_length=262144, is_fast=True, padding_side='right', truncation_side='left', special_tokens={'eos_token': '<|im_end|>', 'pad_token': '<|endoftext|>', 'additional_special_tokens': ['<|im_start|>', '<|im_end|>', '<|object_ref_start|>', '<|object_ref_end|>', '<|box_start|>', '<|box_end|>', '<|quad_start|>', '<|quad_end|>', '<|vision_start|>', '<|vision_end|>', '<|vision_pad|>', '<|image_pad|>', '<|video_pad|>']}, clean_up_tokenization_spaces=False, added_tokens_decoder={
+	151643: AddedToken("<|endoftext|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151644: AddedToken("<|im_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151645: AddedToken("<|im_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151646: AddedToken("<|object_ref_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151647: AddedToken("<|object_ref_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151648: AddedToken("<|box_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151649: AddedToken("<|box_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151650: AddedToken("<|quad_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151651: AddedToken("<|quad_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151652: AddedToken("<|vision_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151653: AddedToken("<|vision_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151654: AddedToken("<|vision_pad|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151655: AddedToken("<|image_pad|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151656: AddedToken("<|video_pad|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	151657: AddedToken("<tool_call>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151658: AddedToken("</tool_call>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151659: AddedToken("<|fim_prefix|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151660: AddedToken("<|fim_middle|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151661: AddedToken("<|fim_suffix|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151662: AddedToken("<|fim_pad|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151663: AddedToken("<|repo_name|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151664: AddedToken("<|file_sep|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151665: AddedToken("<tool_response>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151666: AddedToken("</tool_response>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151667: AddedToken("<think>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	151668: AddedToken("</think>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+}
+)
+- video_processor: Qwen3VLVideoProcessor {
+  "crop_size": null,
+  "data_format": "channels_first",
+  "default_to_square": true,
+  "device": null,
+  "do_center_crop": null,
+  "do_convert_rgb": true,
+  "do_normalize": true,
+  "do_rescale": true,
+  "do_resize": true,
+  "do_sample_frames": true,
+  "fps": 2,
+  "image_mean": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "image_std": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "input_data_format": null,
+  "max_frames": 768,
+  "merge_size": 2,
+  "min_frames": 4,
+  "num_frames": null,
+  "pad_size": null,
+  "patch_size": 16,
+  "processor_class": "Qwen3VLProcessor",
+  "resample": 3,
+  "rescale_factor": 0.00392156862745098,
+  "return_metadata": false,
+  "size": {
+    "longest_edge": 25165824,
+    "shortest_edge": 4096
+  },
+  "temporal_patch_size": 2,
+  "video_metadata": null,
+  "video_processor_type": "Qwen3VLVideoProcessor"
+}
+
+
+{
+  "processor_class": "Qwen3VLProcessor"
+}
+
+
+Adding requests: 100%|██████████| 1/1 [00:02<00:00,  2.09s/it][AAdding requests: 100%|██████████| 1/1 [00:02<00:00,  2.09s/it]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.44s/it, est. speed input: 2087.44 toks/s, output: 2.32 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.44s/it, est. speed input: 2087.44 toks/s, output: 2.32 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.44s/it, est. speed input: 2087.44 toks/s, output: 2.32 toks/s]
+Processing batched inference:   0%|          | 1/1623 [00:09<4:05:04,  9.07s/it]
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 44.98it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.33it/s, est. speed input: 16747.34 toks/s, output: 4.66 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.33it/s, est. speed input: 16747.34 toks/s, output: 4.66 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  2.33it/s, est. speed input: 16747.34 toks/s, output: 4.66 toks/s]
+Processing batched inference:   0%|          | 2/1623 [00:12<2:42:34,  6.02s/it]
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 46.87it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.71s/it, est. speed input: 4203.67 toks/s, output: 31.58 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.71s/it, est. speed input: 4203.67 toks/s, output: 31.58 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.71s/it, est. speed input: 4203.67 toks/s, output: 31.58 toks/s]
+Processing batched inference:   0%|          | 3/1623 [00:18<2:33:13,  5.68s/it]
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 44.21it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.55s/it, est. speed input: 4629.71 toks/s, output: 12.88 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.55s/it, est. speed input: 4629.71 toks/s, output: 12.88 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.55s/it, est. speed input: 4629.71 toks/s, output: 12.88 toks/s]
+Processing batched inference:   0%|          | 4/1623 [00:23<2:26:52,  5.44s/it]
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 42.46it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s, est. speed input: 9907.74 toks/s, output: 11.03 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s, est. speed input: 9907.74 toks/s, output: 11.03 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s, est. speed input: 9907.74 toks/s, output: 11.03 toks/s]
+Processing batched inference:   0%|          | 5/1623 [00:27<2:15:09,  5.01s/it]
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 52.10it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.62s/it, est. speed input: 4448.57 toks/s, output: 46.41 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.62s/it, est. speed input: 4448.57 toks/s, output: 46.41 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.62s/it, est. speed input: 4448.57 toks/s, output: 46.41 toks/s]
+Processing batched inference:   0%|          | 6/1623 [00:32<2:15:52,  5.04s/it]
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 46.09it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 6850.29 toks/s, output: 27.61 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 6850.29 toks/s, output: 27.61 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it, est. speed input: 6850.29 toks/s, output: 27.61 toks/s]
+Processing batched inference:   0%|          | 7/1623 [00:37<2:12:03,  4.90s/it]
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 46.23it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.98s/it, est. speed input: 3635.14 toks/s, output: 48.04 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.98s/it, est. speed input: 3635.14 toks/s, output: 48.04 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.98s/it, est. speed input: 3635.14 toks/s, output: 48.04 toks/s]
+Processing batched inference:   0%|          | 8/1623 [00:42<2:16:44,  5.08s/it]
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 49.67it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.64s/it, est. speed input: 4385.61 toks/s, output: 17.07 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.64s/it, est. speed input: 4385.61 toks/s, output: 17.07 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.64s/it, est. speed input: 4385.61 toks/s, output: 17.07 toks/s]
+Processing batched inference:   1%|          | 9/1623 [00:47<2:17:44,  5.12s/it]
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 53.66it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.05s/it, est. speed input: 3503.87 toks/s, output: 9.26 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.05s/it, est. speed input: 3503.87 toks/s, output: 9.26 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.05s/it, est. speed input: 3503.87 toks/s, output: 9.26 toks/s]
+Processing batched inference:   1%|          | 10/1623 [00:53<2:20:49,  5.24s/it]
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 12.75it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.35s/it, est. speed input: 715.49 toks/s, output: 26.45 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.35s/it, est. speed input: 715.49 toks/s, output: 26.45 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.35s/it, est. speed input: 715.49 toks/s, output: 26.45 toks/s]
+Processing batched inference:   1%|          | 11/1623 [00:59<2:27:28,  5.49s/it]
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 104.20it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.15s/it, est. speed input: 2711.25 toks/s, output: 43.34 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.15s/it, est. speed input: 2711.25 toks/s, output: 43.34 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.15s/it, est. speed input: 2711.25 toks/s, output: 43.34 toks/s]
+Processing batched inference:   1%|          | 12/1623 [01:02<2:05:32,  4.68s/it]
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 109.13it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.74s/it, est. speed input: 1793.31 toks/s, output: 59.24 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.74s/it, est. speed input: 1793.31 toks/s, output: 59.24 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.74s/it, est. speed input: 1793.31 toks/s, output: 59.24 toks/s]
+Processing batched inference:   1%|          | 13/1623 [01:05<1:55:05,  4.29s/it]
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 112.89it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.13it/s, est. speed input: 3522.46 toks/s, output: 32.76 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.13it/s, est. speed input: 3522.46 toks/s, output: 32.76 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:00<00:00,  1.13it/s, est. speed input: 3522.46 toks/s, output: 32.76 toks/s]
+Processing batched inference:   1%|          | 14/1623 [01:08<1:40:58,  3.77s/it]
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s][AAdding requests: 100%|██████████| 1/1 [00:00<00:00, 114.38it/s]
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
