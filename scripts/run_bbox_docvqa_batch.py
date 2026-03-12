@@ -3,6 +3,7 @@
 import argparse
 import csv
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -77,6 +78,14 @@ def resolve_cli_command():
     if cli:
         return [cli]
     return [sys.executable, "-m", "llamafactory.cli"]
+
+
+def build_subprocess_env():
+    env = os.environ.copy()
+    src_root = Path(__file__).resolve().parent.parent / "src"
+    current = env.get("PYTHONPATH")
+    env["PYTHONPATH"] = str(src_root) if not current else f"{src_root}:{current}"
+    return env
 
 
 def build_vllm_command(model_cfg, args, output_dir):
@@ -222,7 +231,7 @@ def run_one_model(model_cfg, args, output_root):
 
     print(f"[run] {name} ({backend})")
     print(" ".join(command))
-    subprocess.run(command, check=True)
+    subprocess.run(command, check=True, env=build_subprocess_env())
 
     prediction_path = output_dir / "generated_predictions.jsonl"
     if not prediction_path.is_file():
@@ -302,7 +311,7 @@ def parse_args():
     parser.add_argument("--max-new-tokens", type=int, default=256, help="Default generation length.")
     parser.add_argument("--image-max-pixels", type=int, default=262144, help="Default image pixel budget.")
     parser.add_argument("--max-samples", type=int, default=None, help="Optional sample cap for debugging.")
-    parser.add_argument("--vllm-batch-size", type=int, default=128, help="Default vLLM batch size.")
+    parser.add_argument("--vllm-batch-size", type=int, default=8, help="Default vLLM batch size.")
     parser.add_argument(
         "--per-device-eval-batch-size",
         type=int,

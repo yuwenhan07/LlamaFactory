@@ -7,6 +7,13 @@ import zlib
 from pathlib import Path
 
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
+DEFAULT_QA_PROMPT_PREFIX = "Answer the question using only the document image(s). Return only the final answer with no explanation."
+DEFAULT_BBOX_PROMPT_PREFIX = (
+    "Locate the region or regions needed to answer the question in each document image. "
+    "Return only JSON grouped by page in this format: [[[x1, y1, x2, y2], ...], ...]. "
+    "Each outer item corresponds to one input image/page in order. "
+    "Each inner item is one bounding box with normalized coordinates between 0 and 1."
+)
 
 
 def read_chunks(data):
@@ -157,15 +164,65 @@ def clamp_bbox(box, width, height):
     return x1, y1, x2, y2
 
 
+
+def count_prompt_images(record, mode, images):
+    if mode in {"page", "bbox"}:
+        return len(record.get("evidence_page", []) or images)
+    if mode == "document":
+        return len(images)
+
+    region_count = 0
+    for page_boxes in record.get("bbox", []):
+        for box in normalize_page_boxes(page_boxes):
+            if len(box) == 4:
+                region_count += 1
+
+    return region_count or len(images)
+
+
 def build_prompt(query, num_images, prompt_prefix):
-    image_tokens = "<image>" * num_images
+    image_tokens = ["<image>" for _ in range(num_images)]
     parts = []
     if image_tokens:
-        parts.append(image_tokens)
+        parts.extend(image_tokens)
     if prompt_prefix:
         parts.append(prompt_prefix.strip())
     parts.append(query.strip())
     return "\n".join(parts)
+
+
+def normalize_rel_page_boxes(page_boxes):
+    boxes = normalize_page_boxes(page_boxes)
+    normalized = []
+    for box in boxes:
+        if len(box) != 4:
+            continue
+        normalized.append([float(v) for v in box])
+    return normalized
+
+
+def build_bbox_target(record):
+    rel_bbox_pages = record.get("rel_bbox", [])
+    grouped = []
+
+    for page_boxes in rel_bbox_pages:
+        normalized_boxes = normalize_rel_page_boxes(page_boxes)
+        if not normalized_boxes:
+            continue
+        grouped.append(normalized_boxes)
+
+    if not grouped:
+        return None
+
+    return json.dumps(grouped, ensure_ascii=False, separators=(",", ":"))
+
+
+def get_prompt_prefix(args):
+    if args.prompt_prefix is not None:
+        return args.prompt_prefix
+    if args.mode == "bbox":
+        return DEFAULT_BBOX_PROMPT_PREFIX
+    return DEFAULT_QA_PROMPT_PREFIX
 
 
 def build_page_images(record, benchmark_dir):
@@ -178,6 +235,29 @@ def build_page_images(record, benchmark_dir):
             raise FileNotFoundError(f"Page image not found: {image_path}")
         image_paths.append(str(image_path))
     return image_paths
+
+
+def extract_page_number(image_path):
+    stem = image_path.stem
+    prefix = f"{image_path.parent.name}_"
+    if stem.startswith(prefix):
+        suffix = stem[len(prefix) :]
+        if suffix.isdigit():
+            return int(suffix)
+    return stem
+
+
+def build_document_images(record, benchmark_dir):
+    category = record["category"]
+    doc_name = record["doc_name"]
+    doc_dir = benchmark_dir / category / doc_name
+    if not doc_dir.is_dir():
+        raise FileNotFoundError(f"Document image directory not found: {doc_dir}")
+
+    image_paths = sorted(doc_dir.glob(f"{doc_name}_*.png"), key=extract_page_number)
+    if not image_paths:
+        raise FileNotFoundError(f"No page images found in: {doc_dir}")
+    return [str(image_path) for image_path in image_paths]
 
 
 def build_crop_images(record, benchmark_dir, crop_dir, sample_index):
@@ -231,8 +311,10 @@ def convert_dataset(args):
                 break
 
             record = json.loads(line)
-            if args.mode == "page":
+            if args.mode in {"page", "bbox"}:
                 images = build_page_images(record, benchmark_dir)
+            elif args.mode == "document":
+                images = build_document_images(record, benchmark_dir)
             else:
                 images = build_crop_images(record, benchmark_dir, crop_dir, sample_index)
 
@@ -240,11 +322,20 @@ def convert_dataset(args):
                 skipped += 1
                 continue
 
-            user_content = build_prompt(record["query"], len(images), args.prompt_prefix)
+            num_prompt_images = count_prompt_images(record, args.mode, images)
+            prompt_prefix = get_prompt_prefix(args)
+            user_content = build_prompt(record["query"], num_prompt_images, prompt_prefix)
+            assistant_content = record["answer"]
+            if args.mode == "bbox":
+                assistant_content = build_bbox_target(record)
+                if assistant_content is None:
+                    skipped += 1
+                    continue
+
             sample = {
                 "messages": [
                     {"role": "user", "content": user_content},
-                    {"role": "assistant", "content": record["answer"]},
+                    {"role": "assistant", "content": assistant_content},
                 ],
                 "images": images,
                 "bbox_docvqa_id": sample_index,
@@ -258,6 +349,8 @@ def convert_dataset(args):
                 "subimg_type": record.get("subimg_type"),
                 "image_mode": args.mode,
             }
+            if args.mode == "bbox":
+                sample["bbox_target"] = assistant_content
             outfile.write(json.dumps(sample, ensure_ascii=False) + "\n")
             converted += 1
 
@@ -299,12 +392,12 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Convert BBox-DocVQA JSONL into a LlamaFactory multimodal dataset.")
     parser.add_argument(
         "--input-jsonl",
-        default="/ywh/BBox-DocVQA/benchmark/bbox-docvqa-rel.jsonl",
+        default="../BBox-DocVQA-improve/benchmark/bbox-docvqa-rel.jsonl",
         help="Path to the source BBox-DocVQA jsonl file.",
     )
     parser.add_argument(
         "--benchmark-dir",
-        default="/ywh/BBox-DocVQA/benchmark",
+        default="../BBox-DocVQA-improve/benchmark",
         help="Root directory that contains category/doc/page PNG files.",
     )
     parser.add_argument(
@@ -319,14 +412,14 @@ def parse_args():
     )
     parser.add_argument(
         "--mode",
-        choices=["page", "crop"],
+        choices=["page", "crop", "bbox", "document"],
         default="page",
-        help="Use full page PNGs or crop bbox regions into standalone images.",
+        help="Use evidence pages for QA, all document pages for QA, crop bbox regions, or generate normalized bbox targets from page images.",
     )
     parser.add_argument(
         "--prompt-prefix",
-        default="Answer the question using only the document image(s).",
-        help="Optional instruction inserted before the question text.",
+        default=None,
+        help="Optional instruction inserted before the question text. Defaults depend on --mode.",
     )
     parser.add_argument(
         "--max-samples",

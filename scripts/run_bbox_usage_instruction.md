@@ -45,8 +45,8 @@
 cd /ywh/LlamaFactory
 
 python scripts/bbox_docvqa_to_llamafactory.py \
-  --input-jsonl /ywh/BBox-DocVQA/benchmark/bbox-docvqa-rel.jsonl \
-  --benchmark-dir /ywh/BBox-DocVQA/benchmark \
+  --input-jsonl ../BBox-DocVQA-improve/benchmark/bbox-docvqa-rel.jsonl \
+  --benchmark-dir ../BBox-DocVQA-improve/benchmark \
   --dataset-dir data/bbox_docvqa_crop \
   --dataset-name bbox_docvqa_rel_crop \
   --mode crop
@@ -64,8 +64,8 @@ python scripts/bbox_docvqa_to_llamafactory.py \
 
 ```bash
 python scripts/bbox_docvqa_to_llamafactory.py \
-  --input-jsonl /ywh/BBox-DocVQA/benchmark/bbox-docvqa-rel.jsonl \
-  --benchmark-dir /ywh/BBox-DocVQA/benchmark \
+  --input-jsonl ../BBox-DocVQA-improve/benchmark/bbox-docvqa-rel.jsonl \
+  --benchmark-dir ../BBox-DocVQA-improve/benchmark \
   --dataset-dir data/bbox_docvqa_page \
   --dataset-name bbox_docvqa_rel_page \
   --mode page

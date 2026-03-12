@@ -1,15 +1,15 @@
 [
   {
-    "name": "qwen3-vl-4b",
-    "model_name_or_path": "Qwen/Qwen3-VL-4B-Instruct",
+    "name": "qwen3-vl-8b",
+    "model_name_or_path": "/home/models/Qwen3-VL-8B-Instruct",
     "template": "qwen3_vl_nothink",
     "backend": "vllm",
     "image_max_pixels": 262144,
     "max_new_tokens": 256
   },
   {
-    "name": "internvl-4b",
-    "model_name_or_path": "OpenGVLab/InternVL3-4B",
+    "name": "internvl-2b",
+    "model_name_or_path": "/home/models/InternVL3-2B",
     "template": "intern_vl",
     "backend": "hf",
     "precision": "bf16",

@@ -1,6 +1,6 @@
 {
-  "bbox_docvqa_page": {
-    "file_name": "bbox_docvqa_page.jsonl",
+  "bbox_docvqa_rel_page": {
+    "file_name": "bbox_docvqa_rel_page.jsonl",
     "formatting": "sharegpt",
     "columns": {
       "messages": "messages",
