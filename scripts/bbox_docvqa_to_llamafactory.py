@@ -12,7 +12,7 @@ DEFAULT_BBOX_PROMPT_PREFIX = (
     "Locate the region or regions needed to answer the question in each document image. "
     "Return only JSON grouped by page in this format: [[[x1, y1, x2, y2], ...], ...]. "
     "Each outer item corresponds to one input image/page in order. "
-    "Each inner item is one bounding box with normalized coordinates between 0 and 1."
+    "Each inner item is one bounding box with normalized coordinates between 0 and 1000."
 )
 
 
