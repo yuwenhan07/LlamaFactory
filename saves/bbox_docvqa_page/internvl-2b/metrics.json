@@ -1,0 +1,10 @@
+{
+  "samples": 1623,
+  "exact_match": 0.025261860751694395,
+  "contains_match": 0.08133086876155268,
+  "anls": 0.12383611970817616,
+  "name": "internvl-2b",
+  "backend": "vllm",
+  "model_name_or_path": "/home/models/InternVL3-2B-hf",
+  "template": "intern_vl"
+}

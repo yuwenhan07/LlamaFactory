@@ -1,0 +1,2 @@
+name,backend,model_name_or_path,template,samples,exact_match,contains_match,anls
+internvl-2b,vllm,/home/models/InternVL3-2B-hf,intern_vl,1623,0.04436229205175601,0.1115218730745533,0.16519721746042357
