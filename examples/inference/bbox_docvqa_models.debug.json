@@ -1,10 +1,9 @@
 [
   {
-    "name": "internvl-2b",
-    "model_name_or_path": "/home/models/InternVL3-2B-hf",
-    "template": "intern_vl",
+    "name": "qwen3-vl-8b-sft-0313",
+    "model_name_or_path": "/home/models/0313-sft-save",
+    "template": "qwen3_vl_nothink",
     "backend": "vllm",
-    "precision": "bf16",
     "image_max_pixels": 262144,
     "max_new_tokens": 256
   }
