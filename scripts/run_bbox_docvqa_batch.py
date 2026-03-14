@@ -118,6 +118,12 @@ def build_vllm_command(model_cfg, args, output_dir):
         command.extend(["--max_samples", str(args.max_samples)])
     if model_cfg.get("adapter_name_or_path"):
         command.extend(["--adapter_name_or_path", model_cfg["adapter_name_or_path"]])
+    if "temperature" in model_cfg:
+        command.extend(["--temperature", str(model_cfg["temperature"])])
+    if "top_p" in model_cfg:
+        command.extend(["--top_p", str(model_cfg["top_p"])])
+    if "top_k" in model_cfg:
+        command.extend(["--top_k", str(model_cfg["top_k"])])
     if model_cfg.get("vllm_config"):
         value = model_cfg["vllm_config"]
         if not isinstance(value, str):
