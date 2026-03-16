@@ -58,15 +58,13 @@ def to_bool_or_none(text: str):
 
 def build_messages(rb: Dict[str, Any]):
     """
-    适配新 jsonl 格式：
-    - question      -> 问题
-    - answer        -> 标准答案
-    - pred_answer   -> 模型回答
-    其它字段（doc_id, doc_type, evidence_xxx）目前不用。
+    兼容两种输入格式：
+    1. API 批量结果：query / label / predict
+    2. generated_predictions：prompt / label / predict
     """
-    question = rb.get("question")
-    ground_truth = rb.get("answer")
-    response = rb.get("pred_answer")
+    question = rb.get("query") or extract_question(rb.get("prompt"))
+    ground_truth = rb.get("label") or rb.get("lable") or rb.get("answer")
+    response = rb.get("predict") or rb.get("pred_answer")
 
     sys_prompt = (
         "Your task is to evaluate whether the model's response correctly answers the question, "
@@ -86,6 +84,26 @@ def build_messages(rb: Dict[str, Any]):
     return [{"role": "system", "content": sys_prompt}]
 
 
+def extract_question(prompt: Any) -> str:
+    if prompt is None:
+        return ""
+
+    text = str(prompt).strip()
+    prefix = (
+        "user\n\n"
+        "Answer the question using only the document image(s). "
+        "Return only the final answer with no explanation.\n"
+    )
+    suffix = "\nassistant"
+
+    if text.startswith(prefix):
+        text = text[len(prefix):]
+    if text.endswith(suffix):
+        text = text[: -len(suffix)]
+
+    return text.strip()
+
+
 # ===== 单条记录的评估函数（在线程里跑） =====
 
 def eval_one(item: Dict[str, Any], idx: int) -> Dict[str, Any]:
@@ -93,10 +111,12 @@ def eval_one(item: Dict[str, Any], idx: int) -> Dict[str, Any]:
     评估一条记录，在线程池中调用。
     idx 是这条记录在文件中的行号索引，用来保证输出顺序。
     """
-    # 以前用的是 item.get("index")，新格式没有这个字段，
-    # 这里优先用 doc_id，当成这条记录的 id；如果没有就退回 idx。
     uuid = item.get("uuid", idx)
-    rid = item.get("doc_id", idx)
+    rid = item.get("doc_id")
+    if rid is None or (isinstance(rid, str) and not rid.strip()):
+        rid = item.get("bbox_docvqa_id")
+    if rid is None or (isinstance(rid, str) and not rid.strip()):
+        rid = item.get("sample_idx", idx)
 
     params = {
         "model": DEFAULT_MODEL,
@@ -125,13 +145,13 @@ def eval_one(item: Dict[str, Any], idx: int) -> Dict[str, Any]:
         judge_str = None
 
     record = {
-        "uuid": uuid,     # 保留原始顺序用，用于 debug "
+        "uuid": uuid,
         "id": rid,
         "judge": judge_str,
     }
     return {
-        "uuid": uuid,     # 保留原始顺序用，用于 debug
-        "idx": idx,       # 保留原始顺序用
+        "uuid": uuid,
+        "idx": idx,
         "record": record,
     }
 
@@ -170,7 +190,11 @@ def run(input_path: str, output_path: str, max_workers: int = 5):
             except Exception as e:
                 print(f"[ERROR] 处理 idx={idx} 时异常: {e}", file=sys.stderr)
                 # 即便异常，也占个坑，避免写文件时报 None
-                rid = items[idx].get("doc_id", idx)
+                rid = items[idx].get("doc_id")
+                if rid is None or (isinstance(rid, str) and not rid.strip()):
+                    rid = items[idx].get("bbox_docvqa_id")
+                if rid is None or (isinstance(rid, str) and not rid.strip()):
+                    rid = items[idx].get("sample_idx", idx)
                 results[idx] = {"id": rid, "judge": None}
 
             finished += 1
@@ -182,7 +206,11 @@ def run(input_path: str, output_path: str, max_workers: int = 5):
         for idx, rec in enumerate(results):
             if rec is None:
                 # 理论上不会发生，这里多一层保险
-                rid = items[idx].get("doc_id", idx)
+                rid = items[idx].get("doc_id")
+                if rid is None or (isinstance(rid, str) and not rid.strip()):
+                    rid = items[idx].get("bbox_docvqa_id")
+                if rid is None or (isinstance(rid, str) and not rid.strip()):
+                    rid = items[idx].get("sample_idx", idx)
                 rec = {"id": rid, "judge": None}
             fout.write(json.dumps(rec, ensure_ascii=False) + "\n")
             fout.flush()
