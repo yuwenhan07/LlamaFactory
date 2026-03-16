@@ -1,0 +1,13 @@
+base_url https://qianfan.baidubce.com/v2
+model_list 
+
+qwen3.5-397b-a17b
+qwen3.5-122b-a10b
+qwen3.5-27b
+
+qwen3-vl-235b-a22b-instruct
+qwen3-vl-32b-instruct
+qwen3-vl-8b-instruct
+
+internvl3-38b
+ernie-5.0

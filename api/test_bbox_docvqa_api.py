@@ -61,16 +61,27 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Test BBox-DocVQA data through OpenAI-style API.")
     parser.add_argument("--dataset-jsonl", required=True, help="Path to the dataset jsonl file.")
     parser.add_argument("--output", required=True, help="Path to the output jsonl file.")
-    parser.add_argument("--model", default="nvidia/nemotron-nano-12b-v2-vl:free", help="Model name exposed by the API.")
+    parser.add_argument("--model", default="qwen3.5-397b-a17b", help="Model name exposed by the API.")
     parser.add_argument(
         "--base-url",
-        default="https://openrouter.ai/api/v1",
+        default="https://qianfan.baidubce.com/v2",
         help="OpenAI-compatible API base URL.",
+    )
+    parser.add_argument(
+        "--api-key-env",
+        default="QIANFAN_API_KEY",
+        help="Environment variable name that stores the API key.",
     )
     parser.add_argument("--start-index", type=int, default=0, help="0-based start sample index.")
     parser.add_argument("--max-samples", type=int, default=None, help="Maximum number of samples to send.")
     parser.add_argument("--max-images", type=int, default=None, help="Optional cap for images per prompt.")
     parser.add_argument("--temperature", type=float, default=0.0, help="Sampling temperature.")
+    parser.add_argument("--top-p", type=float, default=None, help="Optional top-p sampling value.")
+    parser.add_argument(
+        "--enable-thinking",
+        action="store_true",
+        help="Pass enable_thinking=true in extra_body for Qianfan-compatible models.",
+    )
     return parser.parse_args()
 
 
@@ -78,7 +89,7 @@ def main() -> None:
     args = parse_args()
 
     client = OpenAI(
-        api_key=os.environ["OPENROUTER_API_KEY"],
+        api_key=os.environ[args.api_key_env],
         base_url=args.base_url,
     )
 
@@ -111,10 +122,19 @@ def main() -> None:
             }
 
             try:
+                extra_body = None
+                if args.enable_thinking:
+                    extra_body = {
+                        "stop": [],
+                        "enable_thinking": True,
+                    }
+
                 response = client.chat.completions.create(
                     model=args.model,
                     messages=[{"role": "user", "content": content}],
                     temperature=args.temperature,
+                    top_p=args.top_p,
+                    extra_body=extra_body,
                 )
                 record["predict"] = response.choices[0].message.content
                 record["error"] = None
