@@ -1,0 +1,10 @@
+{
+  "samples": 864,
+  "exact_match": 0.023148148148148147,
+  "contains_match": 0.056712962962962965,
+  "anls": 0.0843655230686793,
+  "name": "qwen3-vl-8b",
+  "backend": "vllm",
+  "model_name_or_path": "/home/models/Qwen3-VL-8B-Instruct",
+  "template": "qwen3_vl_nothink"
+}

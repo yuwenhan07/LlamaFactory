@@ -1,0 +1,3 @@
+nohup python scripts/run_bbox_docvqa_batch.py --models-json examples/inference/bbox_docvqa_models.qwen.json --dataset-dir data/bbox_docvqa_pred_crop/qwen3-8b/ --dataset-name bbox_docvqa_pred_crop_qwen3_8b --output-root saves/bbox_docvqa_pred_crop/qwen3-8b --vllm-batch-size 1 > log/crop_answer_qwen3_8b.log 2>&1
+
+nohup python scripts/run_bbox_docvqa_batch.py --models-json examples/inference/bbox_docvqa_models.sft.json --dataset-dir data/bbox_docvqa_pred_crop/qwen3-8b-sft/ --dataset-name bbox_docvqa_pred_crop_qwen3_8b_sft --output-root saves/bbox_docvqa_pred_crop --vllm-batch-size 1 > log/crop_answer_qwen3_8b_sft.log 2>&1 &
