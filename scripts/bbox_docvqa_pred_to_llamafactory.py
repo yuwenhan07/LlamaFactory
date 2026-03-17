@@ -7,16 +7,19 @@ python scripts/bbox_docvqa_pred_to_llamafactory.py --source-jsonl data/bbox_docv
 import argparse
 import os
 import json
+import ast
 import struct
 import zlib
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
+import re
 
 from PIL import Image, UnidentifiedImageError
 
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 DEFAULT_QA_PROMPT_PREFIX = "Answer the question using only the document image(s). Return only the final answer with no explanation."
 MIN_CROP_EDGE = 28
+NUMBER_RE = re.compile(r"-?\d+(?:\.\d+)?")
 
 
 def read_chunks(data):
@@ -185,43 +188,155 @@ def strip_code_fence(text):
 
 
 def extract_json_span(text):
-    start = text.find("[")
-    end = text.rfind("]")
+    first_positions = [idx for idx in (text.find("["), text.find("{")) if idx != -1]
+    start = min(first_positions) if first_positions else -1
+    end = max(text.rfind("]"), text.rfind("}"))
     if start == -1 or end == -1 or end < start:
         return None
     return text[start : end + 1]
 
 
-def extract_boxes(node):
-    boxes = []
-    if isinstance(node, list):
-        if len(node) == 4 and all(isinstance(v, (int, float)) for v in node):
-            boxes.append([float(v) for v in node])
+def parse_numeric_box(box):
+    if isinstance(box, dict):
+        for key in ("bbox_2d", "bbox", "box", "coordinates"):
+            if key in box:
+                return parse_numeric_box(box[key])
+        return None
+
+    if isinstance(box, (list, tuple)) and len(box) == 4:
+        values = []
+        for item in box:
+            if isinstance(item, (int, float)):
+                values.append(float(item))
+            elif isinstance(item, str):
+                match = NUMBER_RE.fullmatch(item.strip())
+                if not match:
+                    return None
+                values.append(float(match.group(0)))
+            else:
+                return None
+        return values
+
+    if isinstance(box, str):
+        numbers = NUMBER_RE.findall(box)
+        if len(numbers) == 4:
+            return [float(num) for num in numbers]
+
+    return None
+
+
+def is_box_list(value):
+    return isinstance(value, list) and all(parse_numeric_box(item) is not None for item in value)
+
+
+def is_page_list(value):
+    return isinstance(value, list) and all(is_box_list(item) for item in value)
+
+
+def split_flat_number_sequence(value):
+    if not isinstance(value, (list, tuple)):
+        return None
+
+    numbers = []
+    for item in value:
+        if isinstance(item, (int, float)):
+            numbers.append(float(item))
+        elif isinstance(item, str):
+            match = NUMBER_RE.fullmatch(item.strip())
+            if not match:
+                return None
+            numbers.append(float(match.group(0)))
         else:
-            for item in node:
-                boxes.extend(extract_boxes(item))
-    return boxes
+            return None
 
-
-def parse_predicted_boxes(text):
-    text = strip_code_fence(text)
-    json_span = extract_json_span(text)
-    if json_span is None:
+    if not numbers or len(numbers) % 4 != 0:
         return None
 
-    try:
-        payload = json.loads(json_span)
-    except json.JSONDecodeError:
+    return [numbers[idx : idx + 4] for idx in range(0, len(numbers), 4)]
+
+
+def normalize_pages_from_nested_lists(data):
+    if not isinstance(data, list) or is_box_list(data):
         return None
 
-    if not isinstance(payload, list):
+    pages = []
+    for item in data:
+        box = parse_numeric_box(item)
+        if box is not None:
+            pages.append([box])
+            continue
+
+        split_boxes = split_flat_number_sequence(item)
+        if split_boxes is not None:
+            pages.append(split_boxes)
+            continue
+
+        if is_box_list(item):
+            pages.append([parse_numeric_box(box) for box in item if parse_numeric_box(box) is not None])
+            continue
+
         return None
 
-    grouped = []
-    for page_item in payload:
-        page_boxes = extract_boxes(page_item)
-        grouped.append(page_boxes)
-    return grouped
+    return pages
+
+
+def parse_structured_text(text):
+    cleaned = strip_code_fence(text)
+    if not cleaned:
+        return []
+
+    json_span = extract_json_span(cleaned)
+    candidates = [cleaned]
+    if json_span is not None and json_span != cleaned:
+        candidates.insert(0, json_span)
+
+    for candidate in candidates:
+        for loader in (json.loads, ast.literal_eval):
+            try:
+                return loader(candidate)
+            except Exception:
+                continue
+
+    box_strings = re.findall(r"\[[^\[\]]+\]", cleaned)
+    boxes = []
+    for box_str in box_strings:
+        box = parse_numeric_box(box_str)
+        if box is not None:
+            boxes.append(box)
+    if boxes:
+        return boxes
+
+    return None
+
+
+def parse_predicted_boxes(text, num_source_pages=1):
+    payload = parse_structured_text(text)
+    if payload is None:
+        return None
+    if parse_numeric_box(payload) is not None:
+        return [[parse_numeric_box(payload)]]
+    if is_page_list(payload):
+        return [
+            [parse_numeric_box(item) for item in page if parse_numeric_box(item) is not None]
+            for page in payload
+        ]
+    if is_box_list(payload):
+        flat_boxes = [parse_numeric_box(item) for item in payload if parse_numeric_box(item) is not None]
+        if num_source_pages > 1 and len(flat_boxes) == num_source_pages:
+            return [[box] for box in flat_boxes]
+        return [flat_boxes]
+
+    split_boxes = split_flat_number_sequence(payload)
+    if split_boxes is not None:
+        if num_source_pages > 1 and len(split_boxes) == num_source_pages:
+            return [[box] for box in split_boxes]
+        return [split_boxes]
+
+    nested_pages = normalize_pages_from_nested_lists(payload)
+    if nested_pages is not None:
+        return nested_pages
+
+    return None
 
 
 def normalize_rel_box(box):
@@ -322,7 +437,10 @@ def build_crops_from_prediction(record, predicted_pages, crop_dir, sample_index,
 def process_one_sample(task):
     sample_index, source_record, prediction_record, crop_dir_str, prompt_prefix, min_crop_edge = task
     crop_dir = Path(crop_dir_str)
-    predicted_pages = parse_predicted_boxes(prediction_record.get("predict", ""))
+    predicted_pages = parse_predicted_boxes(
+        prediction_record.get("predict", ""),
+        num_source_pages=len(source_record.get("images", [])),
+    )
     if predicted_pages is None:
         return {"status": "skip", "reason": "invalid_predicted_boxes", "sample_index": sample_index}
 
