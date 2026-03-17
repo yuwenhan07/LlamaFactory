@@ -1,0 +1,2 @@
+name,backend,model_name_or_path,template,samples,exact_match,contains_match,anls
+qwen3-vl-8b-sft-0313,vllm,/home/models/0313-sft-save,qwen3_vl_nothink,1622,0.036991368680641186,0.08014796547472257,0.09384322991120855

@@ -1,0 +1,10 @@
+{
+  "samples": 1622,
+  "exact_match": 0.036991368680641186,
+  "contains_match": 0.08014796547472257,
+  "anls": 0.09384322991120855,
+  "name": "qwen3-vl-8b-sft-0313",
+  "backend": "vllm",
+  "model_name_or_path": "/home/models/0313-sft-save",
+  "template": "qwen3_vl_nothink"
+}
