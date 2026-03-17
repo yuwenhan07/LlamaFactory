@@ -6,8 +6,7 @@
     "backend": "vllm",
     "image_max_pixels": 262144,
     "max_new_tokens": 256,
-    "temperature": 0.1,
-    "top_p": 0.95,
-    "top_k": 10
+    "temperature": 0,
+    "top_p": 1
   }
 ]
