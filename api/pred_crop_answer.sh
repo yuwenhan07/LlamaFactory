@@ -24,6 +24,6 @@ python test_bbox_docvqa_api.py --dataset-jsonl ../data/bbox_docvqa_pred_crop/qwe
 python test_bbox_docvqa_api.py --dataset-jsonl ../data/bbox_docvqa_pred_crop/internvl3_38b/bbox_docvqa_pred_crop_internvl3_38b.jsonl --output output/pred_crop_answer/pred_crop_answer__internvl3-38b.jsonl --model internvl3-38b --base-url https://qianfan.baidubce.com/v2 &
 
 # pred crop answer | ernie-5.0
-# python test_bbox_docvqa_api.py --dataset-jsonl ../data/bbox_docvqa_pred_crop/ernie_5_0/bbox_docvqa_pred_crop_ernie_5_0.jsonl --output output/pred_crop_answer/pred_crop_answer__ernie-5.0.jsonl --model ernie-5.0 --base-url https://qianfan.baidubce.com/v2 &
+python test_bbox_docvqa_api.py --dataset-jsonl ../data/bbox_docvqa_pred_crop/ernie_5_0/bbox_docvqa_pred_crop_ernie_5_0.jsonl --output output/pred_crop_answer/pred_crop_answer__ernie-5.0.jsonl --model ernie-5.0 --base-url https://qianfan.baidubce.com/v2 &
 
 wait
