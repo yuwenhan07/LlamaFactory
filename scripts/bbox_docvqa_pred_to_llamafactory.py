@@ -176,6 +176,8 @@ def build_prompt(query, num_images, prompt_prefix):
 
 
 def strip_code_fence(text):
+    if text is None:
+        return ""
     text = text.strip()
     if text.startswith("```"):
         lines = text.splitlines()
@@ -281,6 +283,8 @@ def normalize_pages_from_nested_lists(data):
 
 
 def parse_structured_text(text):
+    if text is None:
+        return []
     cleaned = strip_code_fence(text)
     if not cleaned:
         return []

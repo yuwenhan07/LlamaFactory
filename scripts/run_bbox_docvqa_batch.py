@@ -315,7 +315,7 @@ def parse_args():
     )
     parser.add_argument("--cutoff-len", type=int, default=20480, help="Default cutoff length.")
     parser.add_argument("--max-new-tokens", type=int, default=256, help="Default generation length.")
-    parser.add_argument("--image-max-pixels", type=int, default=262144, help="Default image pixel budget.")
+    parser.add_argument("--image-max-pixels", type=int, default=26214400, help="Default image pixel budget.")
     parser.add_argument("--max-samples", type=int, default=None, help="Optional sample cap for debugging.")
     parser.add_argument("--vllm-batch-size", type=int, default=16, help="Default vLLM batch size.")
     parser.add_argument(
