@@ -1,0 +1,52 @@
+{
+  "input_file": "/home/work/workspace/ywh/LlamaFactory/api/output/pred_bbox/pred_bbox__ernie-5.0.jsonl",
+  "samples": 877,
+  "valid_samples": 843,
+  "parse_failures": 34,
+  "mean_sample_iou": 0.225124,
+  "mean_sample_iou_valid_only": 0.234204,
+  "mean_page_iou": 0.224495,
+  "mean_page_iou_valid_only": 0.233549,
+  "grouped_prediction_samples": 480,
+  "flat_fallback_samples": 363,
+  "predict_parse_modes": {
+    "flat_boxes": 362,
+    "page_grouped_recovered": 480,
+    "flat_number_sequence": 1
+  },
+  "sample_iou_thresholds": {
+    "iou@0.3": {
+      "count": 270,
+      "total": 877,
+      "rate": 0.307868
+    },
+    "iou@0.5": {
+      "count": 146,
+      "total": 877,
+      "rate": 0.166477
+    },
+    "iou@0.7": {
+      "count": 64,
+      "total": 877,
+      "rate": 0.072976
+    }
+  },
+  "page_iou_thresholds": {
+    "iou@0.3": {
+      "count": 268,
+      "total": 877,
+      "rate": 0.305587
+    },
+    "iou@0.5": {
+      "count": 146,
+      "total": 877,
+      "rate": 0.166477
+    },
+    "iou@0.7": {
+      "count": 64,
+      "total": 877,
+      "rate": 0.072976
+    }
+  },
+  "scored_file": "/home/work/workspace/ywh/LlamaFactory/metrics/output/pred_bbox_iou/pred_bbox__ernie-5.0_iou_scored.jsonl"
+}

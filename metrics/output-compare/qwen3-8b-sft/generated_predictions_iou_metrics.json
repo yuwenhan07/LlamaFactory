@@ -1,0 +1,54 @@
+{
+  "input_file": "/home/work/workspace/ywh/LlamaFactory/saves/bbox_docvqa_bbox_out_1000_compare/qwen3-vl-8b-sft-0313/generated_predictions.jsonl",
+  "samples": 1623,
+  "valid_samples": 1623,
+  "parse_failures": 0,
+  "mean_sample_iou": 0.361592,
+  "mean_sample_iou_valid_only": 0.361592,
+  "mean_page_iou": 0.361524,
+  "mean_page_iou_valid_only": 0.361524,
+  "grouped_prediction_samples": 32,
+  "flat_fallback_samples": 1591,
+  "predict_parse_modes": {
+    "flat_boxes": 1590,
+    "page_grouped": 1,
+    "page_grouped_recovered": 6,
+    "promoted_by_order": 25,
+    "flat_number_sequence": 1
+  },
+  "sample_iou_thresholds": {
+    "iou@0.3": {
+      "count": 879,
+      "total": 1623,
+      "rate": 0.54159
+    },
+    "iou@0.5": {
+      "count": 391,
+      "total": 1623,
+      "rate": 0.240912
+    },
+    "iou@0.7": {
+      "count": 243,
+      "total": 1623,
+      "rate": 0.149723
+    }
+  },
+  "page_iou_thresholds": {
+    "iou@0.3": {
+      "count": 879,
+      "total": 1623,
+      "rate": 0.54159
+    },
+    "iou@0.5": {
+      "count": 391,
+      "total": 1623,
+      "rate": 0.240912
+    },
+    "iou@0.7": {
+      "count": 243,
+      "total": 1623,
+      "rate": 0.149723
+    }
+  },
+  "scored_file": "/home/work/workspace/ywh/LlamaFactory/metrics/output/qwen3-8b-sft/generated_predictions_iou_scored.jsonl"
+}
