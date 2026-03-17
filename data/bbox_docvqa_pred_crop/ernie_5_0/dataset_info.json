@@ -1,0 +1,16 @@
+{
+  "bbox_docvqa_pred_crop_ernie_5_0": {
+    "file_name": "bbox_docvqa_pred_crop_ernie_5_0.jsonl",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant"
+    }
+  }
+}
