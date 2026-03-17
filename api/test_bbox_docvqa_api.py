@@ -82,7 +82,37 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Pass enable_thinking=true in extra_body for Qianfan-compatible models.",
     )
+    parser.add_argument(
+        "--resume",
+        action="store_true",
+        help="Resume from existing output jsonl: skip successful records and retry failed ones.",
+    )
     return parser.parse_args()
+
+
+def load_existing_records(output_path: Path) -> dict[int, dict]:
+    records: dict[int, dict] = {}
+    if not output_path.exists():
+        return records
+
+    with output_path.open("r", encoding="utf-8") as reader:
+        for line in reader:
+            line = line.strip()
+            if not line:
+                continue
+            record = json.loads(line)
+            sample_idx = record.get("sample_idx")
+            if isinstance(sample_idx, int):
+                records[sample_idx] = record
+
+    return records
+
+
+def rewrite_existing_records(output_path: Path, records: dict[int, dict]) -> None:
+    with output_path.open("w", encoding="utf-8", buffering=1) as writer:
+        for sample_idx in sorted(records):
+            writer.write(json.dumps(records[sample_idx], ensure_ascii=False) + "\n")
+            writer.flush()
 
 
 def main() -> None:
@@ -96,6 +126,11 @@ def main() -> None:
     dataset_path = Path(args.dataset_jsonl)
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    existing_records: dict[int, dict] = {}
+    if args.resume:
+        existing_records = load_existing_records(output_path)
+        if existing_records:
+            rewrite_existing_records(output_path, existing_records)
 
     with dataset_path.open("r", encoding="utf-8") as reader:
         rows = [json.loads(line) for line in reader]
@@ -104,8 +139,17 @@ def main() -> None:
     if args.max_samples is not None:
         end_index = min(end_index, args.start_index + args.max_samples)
 
-    with output_path.open("w", encoding="utf-8") as writer:
+    write_mode = "a" if args.resume and output_path.exists() else "w"
+    with output_path.open(write_mode, encoding="utf-8", buffering=1) as writer:
         for sample_idx in range(args.start_index, end_index):
+            existing_record = existing_records.get(sample_idx)
+            if existing_record is not None and existing_record.get("error") is None:
+                print(
+                    f"[{sample_idx}] bbox_docvqa_id={existing_record.get('bbox_docvqa_id')} "
+                    f"resume_skip=True"
+                )
+                continue
+
             sample = rows[sample_idx]
             prompt_text, label = extract_prompt_and_label(sample)
             images = sample.get("images", [])
@@ -143,6 +187,7 @@ def main() -> None:
                 record["error"] = str(exc)
 
             writer.write(json.dumps(record, ensure_ascii=False) + "\n")
+            writer.flush()
             print(
                 f"[{sample_idx}] bbox_docvqa_id={record['bbox_docvqa_id']} "
                 f"images={record['num_images_sent']}/{record['num_images']} "

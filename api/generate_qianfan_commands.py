@@ -108,8 +108,18 @@ def read_arg_value(tokens: list[str], arg_name: str) -> str | None:
     return None
 
 
+def output_subdir(label: str) -> str:
+    mapping = {
+        "crop": "crop",
+        "page": "page",
+        "document": "doc",
+        "predict bbox": "pred_bbox",
+    }
+    return mapping.get(label.strip().lower(), slugify(label))
+
+
 def build_commands(command_entries: list[dict[str, str]], models: list[str], base_url: str | None) -> list[str]:
-    lines: list[str] = []
+    lines: list[str] = ["#!/usr/bin/env bash", "", "set -euo pipefail", ""]
 
     for command_entry in command_entries:
         for model in models:
@@ -121,13 +131,18 @@ def build_commands(command_entries: list[dict[str, str]], models: list[str], bas
             output_value = read_arg_value(tokens, "--output")
             if output_value:
                 output_path = Path(output_value)
-                output_name = f"{output_path.stem}__{slugify(model)}{output_path.suffix or '.jsonl'}"
+                subdir = output_subdir(command_entry["label"])
+                file_stem = output_path.stem
+                if file_stem.startswith("qianfan_debug_"):
+                    file_stem = file_stem[len("qianfan_debug_") :]
+                output_name = f"output/{subdir}/{file_stem}__{slugify(model)}{output_path.suffix or '.jsonl'}"
                 tokens = replace_arg(tokens, "--output", output_name)
 
             lines.append(f"# {command_entry['label']} | {model}")
-            lines.append(shlex.join(tokens))
+            lines.append(f"{shlex.join(tokens)} &")
             lines.append("")
 
+    lines.append("wait")
     return lines
 
 
