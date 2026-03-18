@@ -1,0 +1,2 @@
+name,backend,model_name_or_path,template,samples,exact_match,contains_match,anls
+qwen3-vl-8b,vllm,/home/models/Qwen3-VL-8B-Instruct,qwen3_vl_nothink,1622,0.05672009864364982,0.10727496917385944,0.20315818534998203

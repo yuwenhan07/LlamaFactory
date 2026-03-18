@@ -174,8 +174,7 @@ ms_cache/
 om_cache/
 llamaboard_cache/
 llamaboard_config/
-output/
-outputs/
+
 wandb/
 swanlog/
 

@@ -1,0 +1,18 @@
+[
+  {
+    "dataset_dir_name": "ernie_5_0",
+    "dataset_dir": "/home/work/workspace/ywh/LlamaFactory/data/bbox_docvqa_pred_crop/ernie_5_0",
+    "dataset_name": "bbox_docvqa_pred_crop_ernie_5_0",
+    "output_root": "/home/work/workspace/ywh/LlamaFactory/saves/bbox_docvqa_pred_crop_answer_qwen3-8b_all/ernie_5_0",
+    "status": "skipped",
+    "returncode": 0
+  },
+  {
+    "dataset_dir_name": "internvl3_38b",
+    "dataset_dir": "/home/work/workspace/ywh/LlamaFactory/data/bbox_docvqa_pred_crop/internvl3_38b",
+    "dataset_name": "bbox_docvqa_pred_crop_internvl3_38b",
+    "output_root": "/home/work/workspace/ywh/LlamaFactory/saves/bbox_docvqa_pred_crop_answer_qwen3-8b_all/internvl3_38b",
+    "status": "failed",
+    "returncode": 1
+  }
+]

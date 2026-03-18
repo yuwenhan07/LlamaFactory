@@ -73,6 +73,20 @@ def load_model_configs(path):
     return data
 
 
+def load_existing_metrics(metrics_path):
+    with Path(metrics_path).open("r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def has_complete_model_outputs(output_dir):
+    required_files = [
+        output_dir / "generated_predictions.jsonl",
+        output_dir / "scored_predictions.jsonl",
+        output_dir / "metrics.json",
+    ]
+    return all(path.is_file() for path in required_files)
+
+
 def resolve_cli_command():
     cli = shutil.which("llamafactory-cli")
     if cli:
@@ -116,6 +130,9 @@ def build_vllm_command(model_cfg, args, output_dir):
     ]
     if args.max_samples is not None:
         command.extend(["--max_samples", str(args.max_samples)])
+    max_images_per_sample = model_cfg.get("max_images_per_sample", args.max_images_per_sample)
+    if max_images_per_sample is not None:
+        command.extend(["--max_images_per_sample", str(max_images_per_sample)])
     if model_cfg.get("adapter_name_or_path"):
         command.extend(["--adapter_name_or_path", model_cfg["adapter_name_or_path"]])
     if "temperature" in model_cfg:
@@ -228,6 +245,10 @@ def run_one_model(model_cfg, args, output_root):
     output_dir = output_root / name
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    if args.resume and has_complete_model_outputs(output_dir):
+        print(f"[skip] {name} ({backend})")
+        return load_existing_metrics(output_dir / "metrics.json")
+
     if backend == "vllm":
         command = build_vllm_command(model_cfg, args, output_dir)
     elif backend == "hf":
@@ -319,6 +340,12 @@ def parse_args():
     parser.add_argument("--max-samples", type=int, default=None, help="Optional sample cap for debugging.")
     parser.add_argument("--vllm-batch-size", type=int, default=16, help="Default vLLM batch size.")
     parser.add_argument(
+        "--max-images-per-sample",
+        type=int,
+        default=None,
+        help="Truncate per-sample image count before vLLM inference. Defaults to vLLM's own image limit when unset.",
+    )
+    parser.add_argument(
         "--per-device-eval-batch-size",
         type=int,
         default=1,
@@ -329,6 +356,11 @@ def parse_args():
         choices=["auto", "bf16", "fp16"],
         default="auto",
         help="Default precision for the HF backend.",
+    )
+    parser.add_argument(
+        "--resume",
+        action="store_true",
+        help="Skip models whose outputs already exist in the output directory.",
     )
     return parser.parse_args()
 
