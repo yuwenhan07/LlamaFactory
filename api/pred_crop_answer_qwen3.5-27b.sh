@@ -28,7 +28,8 @@ python test_bbox_docvqa_api.py --dataset-jsonl ../data/bbox_docvqa_pred_crop/qwe
 python test_bbox_docvqa_api.py --dataset-jsonl ../data/bbox_docvqa_pred_crop/internvl3_38b/bbox_docvqa_pred_crop_internvl3_38b.jsonl --output output/pred_crop_answer_qwen3.5-27b/pred_crop_answer__internvl3-38b.jsonl --model qwen3.5-27b --base-url https://qianfan.baidubce.com/v2 
 
 # pred crop answer | ernie-5.0
-# python test_bbox_docvqa_api.py --dataset-jsonl ../data/bbox_docvqa_pred_crop/ernie_5_0/bbox_docvqa_pred_crop_ernie_5_0.jsonl --output output/pred_crop_answer_qwen3.5-27b/pred_crop_answer__ernie-5.0.jsonl --model ernie-5.0 --base-url https://qianfan.baidubce.com/v2 
+python test_bbox_docvqa_api.py --dataset-jsonl ../data/bbox_docvqa_pred_crop/ernie_5_0/bbox_docvqa_pred_crop_ernie_5_0.jsonl --output output/pred_crop_answer_qwen3.5-27b/pred_crop_answer__ernie-5.0.jsonl --model qwen3.5-27b --base-url https://qianfan.baidubce.com/v2 
 
 
 
+python test_bbox_docvqa_api.py --dataset-jsonl ../split_and_combine/pred_bbox_answer/pred_bbox_answer_sft.jsonl --output ../split_and_combine/out/pred_crop_answer__qwen3_8b_sft_0313.jsonl --model qwen3.5-27b --base-url https://qianfan.baidubce.com/v2 
