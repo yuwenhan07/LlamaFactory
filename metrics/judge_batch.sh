@@ -7,6 +7,6 @@ for f in api/output/page/*.jsonl;
 done
 
 
-for f in api/output/pred_crop_answer//*.jsonl; 
-    do     base=$(basename "$f");    python metrics/judge.py "$f" "metrics/output_new/pred_bbox_answer-models/$base";   
+for f in api/output/pred_crop_answer_qwen3.5-27b/*.jsonl; 
+    do     base=$(basename "$f");    python metrics/judge.py "$f" "metrics/judge_output/pred_crop_answer_qwen3.5-27b/$base";   
 done
