@@ -2,6 +2,7 @@
 
 set -euo pipefail
 
+python test_bbox_docvqa_api.py --dataset-jsonl ../data/bbox_docvqa_document/bbox_docvqa_document.jsonl --output output/doc/doc__qwen3.5-397b-a17b.jsonl --model qwen3.5-397b-a17b --base-url https://qianfan.baidubce.com/v2 --resume 
 
 # document | qwen3.5-122b-a10b
 python test_bbox_docvqa_api.py --dataset-jsonl ../data/bbox_docvqa_document/bbox_docvqa_document.jsonl --output output/doc/doc__qwen3.5-122b-a10b.jsonl --model qwen3.5-122b-a10b --base-url https://qianfan.baidubce.com/v2 --resume &
