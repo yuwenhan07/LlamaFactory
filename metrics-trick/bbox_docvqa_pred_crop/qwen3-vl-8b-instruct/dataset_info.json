@@ -1,0 +1,16 @@
+{
+  "pred_bbox_crop_qwen3-vl-8b-instruct": {
+    "file_name": "pred_bbox_crop_qwen3-vl-8b-instruct.jsonl",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant"
+    }
+  }
+}

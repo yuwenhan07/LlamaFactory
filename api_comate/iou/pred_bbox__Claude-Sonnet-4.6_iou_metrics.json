@@ -1,0 +1,54 @@
+{
+  "input_file": "/home/work/workspace/ywh/LlamaFactory/api_comate/output/pred_bbox/pred_bbox__Claude-Sonnet-4.6.jsonl",
+  "samples": 1623,
+  "valid_samples": 1620,
+  "parse_failures": 3,
+  "mean_sample_iou": 0.158957,
+  "mean_sample_iou_valid_only": 0.159251,
+  "mean_page_iou": 0.158965,
+  "mean_page_iou_valid_only": 0.159259,
+  "grouped_prediction_samples": 404,
+  "flat_fallback_samples": 1216,
+  "predict_parse_modes": {
+    "flat_boxes": 1216,
+    "page_grouped_recovered": 178,
+    "empty": 2,
+    "page_grouped": 3,
+    "promoted_by_order": 221
+  },
+  "sample_iou_thresholds": {
+    "iou@0.3": {
+      "count": 280,
+      "total": 1623,
+      "rate": 0.17252
+    },
+    "iou@0.5": {
+      "count": 78,
+      "total": 1623,
+      "rate": 0.048059
+    },
+    "iou@0.7": {
+      "count": 11,
+      "total": 1623,
+      "rate": 0.006778
+    }
+  },
+  "page_iou_thresholds": {
+    "iou@0.3": {
+      "count": 280,
+      "total": 1623,
+      "rate": 0.17252
+    },
+    "iou@0.5": {
+      "count": 78,
+      "total": 1623,
+      "rate": 0.048059
+    },
+    "iou@0.7": {
+      "count": 11,
+      "total": 1623,
+      "rate": 0.006778
+    }
+  },
+  "scored_file": "/home/work/workspace/ywh/LlamaFactory/api_comate/iou/pred_bbox__Claude-Sonnet-4.6_iou_scored.jsonl"
+}

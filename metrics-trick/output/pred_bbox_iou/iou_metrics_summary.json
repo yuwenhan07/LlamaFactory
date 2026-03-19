@@ -1,0 +1,218 @@
+[
+  {
+    "model": "Qwen3-VL-8B",
+    "mean_sample_iou": 0.2119,
+    "iou@0.3": 0.27788,
+    "iou@0.5": 0.141097,
+    "iou@0.7": 0.081947,
+    "sample_iou_thresholds": {
+      "iou@0.3": {
+        "count": 451,
+        "total": 1623,
+        "rate": 0.27788
+      },
+      "iou@0.5": {
+        "count": 229,
+        "total": 1623,
+        "rate": 0.141097
+      },
+      "iou@0.7": {
+        "count": 133,
+        "total": 1623,
+        "rate": 0.081947
+      }
+    }
+  },
+  {
+    "model": "Qwen3-VL-32B",
+    "mean_sample_iou": 0.421945,
+    "iou@0.3": 0.589033,
+    "iou@0.5": 0.351201,
+    "iou@0.7": 0.243376,
+    "sample_iou_thresholds": {
+      "iou@0.3": {
+        "count": 956,
+        "total": 1623,
+        "rate": 0.589033
+      },
+      "iou@0.5": {
+        "count": 570,
+        "total": 1623,
+        "rate": 0.351201
+      },
+      "iou@0.7": {
+        "count": 395,
+        "total": 1623,
+        "rate": 0.243376
+      }
+    }
+  },
+  {
+    "model": "Qwen3-VL-235B-A22B",
+    "mean_sample_iou": 0.306612,
+    "iou@0.3": 0.411583,
+    "iou@0.5": 0.266174,
+    "iou@0.7": 0.162662,
+    "sample_iou_thresholds": {
+      "iou@0.3": {
+        "count": 668,
+        "total": 1623,
+        "rate": 0.411583
+      },
+      "iou@0.5": {
+        "count": 432,
+        "total": 1623,
+        "rate": 0.266174
+      },
+      "iou@0.7": {
+        "count": 264,
+        "total": 1623,
+        "rate": 0.162662
+      }
+    }
+  },
+  {
+    "model": "Qwen3.5-27B",
+    "mean_sample_iou": 0.371902,
+    "iou@0.3": 0.49846,
+    "iou@0.5": 0.316081,
+    "iou@0.7": 0.20764,
+    "sample_iou_thresholds": {
+      "iou@0.3": {
+        "count": 809,
+        "total": 1623,
+        "rate": 0.49846
+      },
+      "iou@0.5": {
+        "count": 513,
+        "total": 1623,
+        "rate": 0.316081
+      },
+      "iou@0.7": {
+        "count": 337,
+        "total": 1623,
+        "rate": 0.20764
+      }
+    }
+  },
+  {
+    "model": "Qwen35-122B-A10B",
+    "mean_sample_iou": 0.310284,
+    "iou@0.3": 0.41528,
+    "iou@0.5": 0.254467,
+    "iou@0.7": 0.16451,
+    "sample_iou_thresholds": {
+      "iou@0.3": {
+        "count": 674,
+        "total": 1623,
+        "rate": 0.41528
+      },
+      "iou@0.5": {
+        "count": 413,
+        "total": 1623,
+        "rate": 0.254467
+      },
+      "iou@0.7": {
+        "count": 267,
+        "total": 1623,
+        "rate": 0.16451
+      }
+    }
+  },
+  {
+    "model": "Qwen3.5-397B-A17B",
+    "mean_sample_iou": 0.399407,
+    "iou@0.3": 0.540357,
+    "iou@0.5": 0.348737,
+    "iou@0.7": 0.214418,
+    "sample_iou_thresholds": {
+      "iou@0.3": {
+        "count": 877,
+        "total": 1623,
+        "rate": 0.540357
+      },
+      "iou@0.5": {
+        "count": 566,
+        "total": 1623,
+        "rate": 0.348737
+      },
+      "iou@0.7": {
+        "count": 348,
+        "total": 1623,
+        "rate": 0.214418
+      }
+    }
+  },
+  {
+    "model": "InternVL3-38B",
+    "mean_sample_iou": 0.054259,
+    "iou@0.3": 0.036352,
+    "iou@0.5": 0.006161,
+    "iou@0.7": 0.001232,
+    "sample_iou_thresholds": {
+      "iou@0.3": {
+        "count": 59,
+        "total": 1623,
+        "rate": 0.036352
+      },
+      "iou@0.5": {
+        "count": 10,
+        "total": 1623,
+        "rate": 0.006161
+      },
+      "iou@0.7": {
+        "count": 2,
+        "total": 1623,
+        "rate": 0.001232
+      }
+    }
+  },
+  {
+    "model": "Erine-5",
+    "mean_sample_iou": 0.146275,
+    "iou@0.3": 0.201479,
+    "iou@0.5": 0.101047,
+    "iou@0.7": 0.041898,
+    "sample_iou_thresholds": {
+      "iou@0.3": {
+        "count": 327,
+        "total": 1623,
+        "rate": 0.201479
+      },
+      "iou@0.5": {
+        "count": 164,
+        "total": 1623,
+        "rate": 0.101047
+      },
+      "iou@0.7": {
+        "count": 68,
+        "total": 1623,
+        "rate": 0.041898
+      }
+    }
+  },
+  {
+    "model": "qwen3-vl-8b-sft-0313",
+    "mean_sample_iou": 0.393112,
+    "iou@0.3": 0.590265,
+    "iou@0.5": 0.298829,
+    "iou@0.7": 0.177449,
+    "sample_iou_thresholds": {
+      "iou@0.3": {
+        "count": 958,
+        "total": 1623,
+        "rate": 0.590265
+      },
+      "iou@0.5": {
+        "count": 485,
+        "total": 1623,
+        "rate": 0.298829
+      },
+      "iou@0.7": {
+        "count": 288,
+        "total": 1623,
+        "rate": 0.177449
+      }
+    }
+  }
+]

@@ -1,0 +1,104 @@
+{
+    "data": [
+        {
+            "id": "MiniMax-M2.5",
+            "object": "model",
+            "created": 1626777600,
+            "owned_by": "custom",
+            "permission": null,
+            "root": "MiniMax-M2.5",
+            "parent": null
+        },
+        {
+            "id": "GLM-5-Turbo",
+            "object": "model",
+            "created": 1626777600,
+            "owned_by": "custom",
+            "permission": null,
+            "root": "GLM-5-Turbo",
+            "parent": null
+        },
+        {
+            "id": "Claude Sonnet 4.6",
+            "object": "model",
+            "created": 1626777600,
+            "owned_by": "custom",
+            "permission": null,
+            "root": "Claude Sonnet 4.6",
+            "parent": null
+        },
+        {
+            "id": "Claude Opus 4.6",
+            "object": "model",
+            "created": 1626777600,
+            "owned_by": "custom",
+            "permission": null,
+            "root": "Claude Opus 4.6",
+            "parent": null
+        },
+        {
+            "id": "Claude Haiku 4.5",
+            "object": "model",
+            "created": 1626777600,
+            "owned_by": "custom",
+            "permission": null,
+            "root": "Claude Haiku 4.5",
+            "parent": null
+        },
+        {
+            "id": "MiniMax-M2-Stable",
+            "object": "model",
+            "created": 1626777600,
+            "owned_by": "custom",
+            "permission": null,
+            "root": "MiniMax-M2-Stable",
+            "parent": null
+        },
+        {
+            "id": "Kimi-K2.5",
+            "object": "model",
+            "created": 1626777600,
+            "owned_by": "custom",
+            "permission": null,
+            "root": "Kimi-K2.5",
+            "parent": null
+        },
+        {
+            "id": "MiniMax-M2.1",
+            "object": "model",
+            "created": 1626777600,
+            "owned_by": "custom",
+            "permission": null,
+            "root": "MiniMax-M2.1",
+            "parent": null
+        },
+        {
+            "id": "GLM-5",
+            "object": "model",
+            "created": 1626777600,
+            "owned_by": "custom",
+            "permission": null,
+            "root": "GLM-5",
+            "parent": null
+        },
+        {
+            "id": "Claude Sonnet 4.5",
+            "object": "model",
+            "created": 1626777600,
+            "owned_by": "custom",
+            "permission": null,
+            "root": "Claude Sonnet 4.5",
+            "parent": null
+        },
+        {
+            "id": "Claude Opus 4.5",
+            "object": "model",
+            "created": 1626777600,
+            "owned_by": "custom",
+            "permission": null,
+            "root": "Claude Opus 4.5",
+            "parent": null
+        }
+    ],
+    "object": "list"
+}

@@ -1,0 +1,51 @@
+{
+  "input_file": "/home/work/workspace/ywh/LlamaFactory/api/output/pred_bbox/pred_bbox__qwen3-vl-32b-instruct.jsonl",
+  "samples": 1623,
+  "valid_samples": 1595,
+  "parse_failures": 28,
+  "mean_sample_iou": 0.421945,
+  "mean_sample_iou_valid_only": 0.429353,
+  "mean_page_iou": 0.420163,
+  "mean_page_iou_valid_only": 0.427539,
+  "grouped_prediction_samples": 1457,
+  "flat_fallback_samples": 138,
+  "predict_parse_modes": {
+    "page_grouped_recovered": 1457,
+    "flat_boxes": 138
+  },
+  "sample_iou_thresholds": {
+    "iou@0.3": {
+      "count": 956,
+      "total": 1623,
+      "rate": 0.589033
+    },
+    "iou@0.5": {
+      "count": 570,
+      "total": 1623,
+      "rate": 0.351201
+    },
+    "iou@0.7": {
+      "count": 395,
+      "total": 1623,
+      "rate": 0.243376
+    }
+  },
+  "page_iou_thresholds": {
+    "iou@0.3": {
+      "count": 947,
+      "total": 1623,
+      "rate": 0.583487
+    },
+    "iou@0.5": {
+      "count": 570,
+      "total": 1623,
+      "rate": 0.351201
+    },
+    "iou@0.7": {
+      "count": 395,
+      "total": 1623,
+      "rate": 0.243376
+    }
+  },
+  "scored_file": "/home/work/workspace/ywh/LlamaFactory/metrics-trick/output/pred_bbox_iou/pred_bbox__qwen3-vl-32b-instruct_iou_scored.jsonl"
+}
