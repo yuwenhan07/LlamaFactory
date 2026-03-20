@@ -1,0 +1,52 @@
+{
+  "input_file": "/home/work/workspace/ywh/LlamaFactory/api_comate/output/pred_bbox/pred_bbox__Kimi-K2.5.jsonl",
+  "samples": 151,
+  "valid_samples": 151,
+  "parse_failures": 0,
+  "mean_sample_iou": 0.049785,
+  "mean_sample_iou_valid_only": 0.049785,
+  "mean_page_iou": 0.049785,
+  "mean_page_iou_valid_only": 0.049785,
+  "grouped_prediction_samples": 36,
+  "flat_fallback_samples": 115,
+  "predict_parse_modes": {
+    "flat_boxes": 115,
+    "page_grouped_recovered": 35,
+    "empty": 1
+  },
+  "sample_iou_thresholds": {
+    "iou@0.3": {
+      "count": 10,
+      "total": 151,
+      "rate": 0.066225
+    },
+    "iou@0.5": {
+      "count": 8,
+      "total": 151,
+      "rate": 0.05298
+    },
+    "iou@0.7": {
+      "count": 1,
+      "total": 151,
+      "rate": 0.006623
+    }
+  },
+  "page_iou_thresholds": {
+    "iou@0.3": {
+      "count": 10,
+      "total": 151,
+      "rate": 0.066225
+    },
+    "iou@0.5": {
+      "count": 8,
+      "total": 151,
+      "rate": 0.05298
+    },
+    "iou@0.7": {
+      "count": 1,
+      "total": 151,
+      "rate": 0.006623
+    }
+  },
+  "scored_file": "/home/work/workspace/ywh/LlamaFactory/metrics/IoU_output/pred_bbox__Kimi-K2.5_iou_scored.jsonl"
+}
