@@ -1,0 +1,53 @@
+{
+  "input_file": "/Users/wenhanyu/Documents/🐟/科研/Proj.BBox-DocVQA/MM-dataset/LlamaFactory/metrics-trick/output/pred_bbox__Kimi-K2.5.jsonl",
+  "samples": 487,
+  "valid_samples": 485,
+  "parse_failures": 2,
+  "mean_sample_iou": 0.051489,
+  "mean_sample_iou_valid_only": 0.051701,
+  "mean_page_iou": 0.051489,
+  "mean_page_iou_valid_only": 0.051701,
+  "grouped_prediction_samples": 120,
+  "flat_fallback_samples": 365,
+  "predict_parse_modes": {
+    "flat_boxes": 365,
+    "page_grouped_recovered": 117,
+    "empty": 2,
+    "page_grouped": 1
+  },
+  "sample_iou_thresholds": {
+    "iou@0.3": {
+      "count": 30,
+      "total": 487,
+      "rate": 0.061602
+    },
+    "iou@0.5": {
+      "count": 17,
+      "total": 487,
+      "rate": 0.034908
+    },
+    "iou@0.7": {
+      "count": 6,
+      "total": 487,
+      "rate": 0.01232
+    }
+  },
+  "page_iou_thresholds": {
+    "iou@0.3": {
+      "count": 30,
+      "total": 487,
+      "rate": 0.061602
+    },
+    "iou@0.5": {
+      "count": 17,
+      "total": 487,
+      "rate": 0.034908
+    },
+    "iou@0.7": {
+      "count": 6,
+      "total": 487,
+      "rate": 0.01232
+    }
+  },
+  "scored_file": "/Users/wenhanyu/Documents/🐟/科研/Proj.BBox-DocVQA/MM-dataset/LlamaFactory/metrics-trick/output/pred_bbox_iou/pred_bbox__Kimi-K2.5_iou_scored.jsonl"
+}

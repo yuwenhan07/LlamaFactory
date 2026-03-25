@@ -1,0 +1,50 @@
+{
+  "input_file": "/Users/wenhanyu/Documents/🐟/科研/Proj.BBox-DocVQA/MM-dataset/LlamaFactory/api_comate/output/pred_bbox/pred_bbox__gpt-5.2.jsonl",
+  "samples": 1623,
+  "valid_samples": 1622,
+  "parse_failures": 1,
+  "mean_sample_iou": 0.316251,
+  "mean_sample_iou_valid_only": 0.316446,
+  "mean_page_iou": 0.317576,
+  "mean_page_iou_valid_only": 0.317772,
+  "grouped_prediction_samples": 1622,
+  "flat_fallback_samples": 0,
+  "predict_parse_modes": {
+    "page_grouped_recovered": 1622
+  },
+  "sample_iou_thresholds": {
+    "iou@0.3": {
+      "count": 797,
+      "total": 1623,
+      "rate": 0.491066
+    },
+    "iou@0.5": {
+      "count": 301,
+      "total": 1623,
+      "rate": 0.185459
+    },
+    "iou@0.7": {
+      "count": 78,
+      "total": 1623,
+      "rate": 0.048059
+    }
+  },
+  "page_iou_thresholds": {
+    "iou@0.3": {
+      "count": 804,
+      "total": 1623,
+      "rate": 0.495379
+    },
+    "iou@0.5": {
+      "count": 305,
+      "total": 1623,
+      "rate": 0.187924
+    },
+    "iou@0.7": {
+      "count": 78,
+      "total": 1623,
+      "rate": 0.048059
+    }
+  },
+  "scored_file": "/Users/wenhanyu/Documents/🐟/科研/Proj.BBox-DocVQA/MM-dataset/LlamaFactory/metrics/IoU_output/pred_bbox__gpt-5.2_iou_scored.jsonl"
+}
